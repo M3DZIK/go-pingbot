@@ -1,0 +1,9 @@
+ports:
+  - port: 8080
+
+checkoutLocation: "go/src/pingbot"
+workspaceLocation: "go/src/pingbot"
+
+vscode:
+  extensions:
+    - golang.go

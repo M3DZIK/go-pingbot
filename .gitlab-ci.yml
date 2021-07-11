@@ -1,0 +1,22 @@
+stages:
+  - build
+
+build:
+  stage: build
+  image: golang:latest
+  before_script:
+    - cd $GOPATH/src
+    - mkdir -p gitlab.com/$CI_PROJECT_NAMESPACE
+    - cd gitlab.com/$CI_PROJECT_NAMESPACE
+    - ln -s $CI_PROJECT_DIR
+    - cd $CI_PROJECT_NAME
+    - make deps
+  script:
+    - make all
+  artifacts:
+    paths:
+      - pingbot-*
+      - MD5SUM
+      - SHA256SUM
+      - VERSION
+    expire_in: 14 days
