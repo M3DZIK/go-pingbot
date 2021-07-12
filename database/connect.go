@@ -13,7 +13,7 @@ import (
 var Client *mongo.Client
 var DB *mongo.Database
 
-func init() {
+func Connect() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 

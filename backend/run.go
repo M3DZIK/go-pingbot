@@ -2,12 +2,14 @@ package backend
 
 import (
 	"time"
+
+	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
 
 func Run() {
 	ping()
 
-	ticker := time.NewTicker(2 * time.Minute)
+	ticker := time.NewTicker(config.PingBot_Ticker)
 
 	quit := make(chan struct{})
 

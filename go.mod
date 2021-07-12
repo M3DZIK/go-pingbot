@@ -23,6 +23,7 @@ require (
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/sirupsen/logrus v1.8.1
+	github.com/tcnksm/go-httpstat v0.2.0
 	github.com/ugorji/go v1.2.6 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
 	go.mongodb.org/mongo-driver v1.5.4

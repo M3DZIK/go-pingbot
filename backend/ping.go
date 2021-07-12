@@ -3,18 +3,19 @@ package backend
 import (
 	"net/http"
 
+	"github.com/tcnksm/go-httpstat"
 	"gitlab.com/gaming0skar123/go/pingbot/common"
 	"gitlab.com/gaming0skar123/go/pingbot/database"
 )
 
-var AmountSuccess uint8
-var AmountErr uint8
+var AmountSuccess uint
+var AmountErr uint
 
 var checkErr = common.CheckErr
 
 func ping() {
 	results, err := database.GetAll()
-	if checkErr(err, "Get All res from DB") {
+	if checkErr(err, "get all from db") {
 		return
 	}
 
@@ -24,8 +25,20 @@ func ping() {
 }
 
 func loop(value database.URL) {
-	r, err := http.Get(value.URL)
-	if checkErr(err, "Ping URL") {
+	req, err := http.NewRequest("GET", value.URL, nil)
+	if checkErr(err, "new http request") {
+		AmountErr++
+		return
+	}
+
+	var result httpstat.Result
+
+	ctx := httpstat.WithHTTPStat(req.Context(), &result)
+	req = req.WithContext(ctx)
+
+	client := http.DefaultClient
+	r, err := client.Do(req)
+	if checkErr(err, "ping url") {
 		AmountErr++
 		return
 	}

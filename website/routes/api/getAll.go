@@ -40,7 +40,7 @@ func GetAll(c *gin.Context) {
 
 		db = append(db, dbType{
 			URL:  value.URL,
-			HASH: hash,
+			Hash: hash,
 		})
 	}
 
@@ -52,5 +52,5 @@ func GetAll(c *gin.Context) {
 
 type dbType struct {
 	URL  string
-	HASH string
+	Hash string
 }
