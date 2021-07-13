@@ -16,5 +16,5 @@ func main() {
 	database.Connect()
 
 	go website.Server()
-	backend.Run()
+	backend.Start()
 }

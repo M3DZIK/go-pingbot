@@ -25,6 +25,6 @@ func Server() {
 
 	err := router.Run(config.Port)
 	if err != nil {
-		panic(err)
+		panic("Starting GIN Server: " + err.Error())
 	}
 }

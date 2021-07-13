@@ -3,7 +3,6 @@ module gitlab.com/gaming0skar123/go/pingbot
 go 1.16
 
 require (
-	github.com/aws/aws-sdk-go v1.39.4 // indirect
 	github.com/blang/semver/v4 v4.0.0
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-gonic/gin v1.7.2
@@ -26,10 +25,11 @@ require (
 	github.com/tcnksm/go-httpstat v0.2.0
 	github.com/ugorji/go v1.2.6 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
-	go.mongodb.org/mongo-driver v1.5.4
+	go.mongodb.org/mongo-driver v1.6.0
 	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
+	golang.org/x/text v0.3.6 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
