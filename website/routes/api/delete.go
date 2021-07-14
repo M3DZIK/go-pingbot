@@ -9,9 +9,6 @@ import (
 )
 
 func Delete(c *gin.Context) {
-	var post URLType
-	c.BindJSON(&post)
-
 	url := c.Param("url")
 
 	d, err := base64.StdEncoding.DecodeString(url)

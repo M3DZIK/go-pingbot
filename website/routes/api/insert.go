@@ -9,7 +9,15 @@ import (
 
 func Insert(c *gin.Context) {
 	var post URLType
-	c.BindJSON(&post)
+	err := c.BindJSON(&post)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"success": false,
+			"message": "Error Binding JSON!",
+		})
+
+		return
+	}
 
 	if len(post.URL) < 1 {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -20,7 +28,7 @@ func Insert(c *gin.Context) {
 		return
 	}
 
-	_, err := http.Get(post.URL)
+	_, err = http.Get(post.URL)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"success": false,
