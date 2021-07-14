@@ -1,3 +1,5 @@
+project_name: pingbot
+
 before:
   hooks:
     - go mod tidy
@@ -8,12 +10,10 @@ builds:
     goarch:
       - amd64
 
+    binary: '{{ .ProjectName }}.out'
+
 archives:
   - format: tar.gz
-
-    format_overrides:
-      - goos: windows
-        format: zip
 
     files:
       - none*

@@ -3,7 +3,7 @@ module gitlab.com/gaming0skar123/go/pingbot
 go 1.16
 
 require (
-	github.com/blang/semver/v4 v4.0.0
+	github.com/blang/semver v3.5.1+incompatible
 	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-playground/validator/v10 v10.7.0 // indirect
@@ -11,7 +11,6 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
-	github.com/inconshreveable/go-update v0.0.0-20160112193335-8152e7eb6ccf
 	github.com/joho/godotenv v1.3.0
 	github.com/jpillora/opts v1.2.0
 	github.com/json-iterator/go v1.1.11 // indirect
@@ -21,6 +20,7 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/posener/complete v1.2.3 // indirect
+	github.com/rhysd/go-github-selfupdate v1.2.3
 	github.com/sirupsen/logrus v1.8.1
 	github.com/tcnksm/go-httpstat v0.2.0
 	github.com/ugorji/go v1.2.6 // indirect
