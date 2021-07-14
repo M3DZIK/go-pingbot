@@ -1,0 +1,22 @@
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - goos:
+      - linux
+    goarch:
+      - amd64
+
+archives:
+  - format: tar.gz
+
+    format_overrides:
+      - goos: windows
+        format: zip
+
+    files:
+      - none*
+
+checksum:
+  name_template: 'checksums.txt'
