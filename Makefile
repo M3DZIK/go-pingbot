@@ -3,9 +3,6 @@ BINARY_NAME=pingbot.out
 build:
 	go build -o ${BINARY_NAME}
 
-all:
-	./build.sh
-
 run:
 	go run .
 
@@ -14,4 +11,4 @@ deps:
 
 clean:
 	go clean
-	rm pingbot* MD5* SHA256* VERSION
+	rm pingbot* dist/
