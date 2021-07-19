@@ -6,9 +6,6 @@ build:
 run:
 	go run .
 
-deps:
-	go get -v
-
 clean:
 	go clean
-	rm pingbot* dist/
+	rm -rf pingbot* dist/

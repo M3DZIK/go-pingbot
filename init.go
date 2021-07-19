@@ -17,7 +17,7 @@ func init() {
 	opts.Parse(&cmd)
 
 	if cmd.Update {
-		go update.Updater()
+		go update.Ticker()
 	} else {
 		log.Warn("Auto Update -> Disabled")
 	}

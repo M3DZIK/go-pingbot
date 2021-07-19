@@ -1,7 +1,6 @@
 package api
 
 import (
-	"encoding/base64"
 	"fmt"
 	"net/http"
 
@@ -33,14 +32,11 @@ func GetAll(c *gin.Context) {
 		return
 	}
 
-	var db []dbType
+	var db []database.URL
 
 	for _, value := range results {
-		hash := base64.URLEncoding.EncodeToString([]byte(value.URL))
-
-		db = append(db, dbType{
-			URL:  value.URL,
-			Hash: hash,
+		db = append(db, database.URL{
+			URL: value.URL,
 		})
 	}
 
@@ -48,9 +44,4 @@ func GetAll(c *gin.Context) {
 		"success": true,
 		"db":      db,
 	})
-}
-
-type dbType struct {
-	URL  string
-	Hash string
 }

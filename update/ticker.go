@@ -6,7 +6,7 @@ import (
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
 
-func Updater() {
+func Ticker() {
 	// Check on start
 	Update()
 

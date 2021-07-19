@@ -3,7 +3,6 @@ package backend
 import (
 	"net/http"
 
-	"github.com/tcnksm/go-httpstat"
 	"gitlab.com/gaming0skar123/go/pingbot/common"
 	"gitlab.com/gaming0skar123/go/pingbot/database"
 )
@@ -30,11 +29,6 @@ func loop(value database.URL) {
 		AmountErr++
 		return
 	}
-
-	var result httpstat.Result
-
-	ctx := httpstat.WithHTTPStat(req.Context(), &result)
-	req = req.WithContext(ctx)
 
 	client := http.DefaultClient
 	r, err := client.Do(req)

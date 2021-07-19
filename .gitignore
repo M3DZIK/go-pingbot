@@ -14,11 +14,10 @@
 
 # Output binary
 *.out
-/pingbot*
+dist/
 
 # Sums
 MD5SUM
 SHA256SUM
 
 VERSION
-dist/

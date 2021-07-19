@@ -8,7 +8,7 @@ import (
 )
 
 func Insert(c *gin.Context) {
-	var post URLType
+	var post database.URL
 	err := c.BindJSON(&post)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{

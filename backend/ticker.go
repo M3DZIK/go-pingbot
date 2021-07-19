@@ -6,7 +6,7 @@ import (
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
 
-func Start() {
+func Ticker() {
 	// Ping on Start
 	ping()
 
@@ -20,6 +20,7 @@ func Start() {
 			ping()
 		case <-quit:
 			ticker.Stop()
+
 			return
 		}
 	}

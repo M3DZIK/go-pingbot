@@ -1,0 +1,7 @@
+{
+  "watch": ["*"],
+  "ext": "go json",
+  "signal": "SIGTERM",
+  "quiet": true,
+  "exec": "clear && go build -o pingbot.out || exit 1 && ./pingbot.out"
+}

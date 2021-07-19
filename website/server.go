@@ -1,8 +1,11 @@
 package website
 
 import (
+	"os"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"gitlab.com/gaming0skar123/go/pingbot/common"
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 	"gitlab.com/gaming0skar123/go/pingbot/website/routes"
 	"gitlab.com/gaming0skar123/go/pingbot/website/routes/api"
@@ -24,7 +27,7 @@ func Server() {
 	api.ApplyRoutes(router)
 
 	err := router.Run(config.Port)
-	if err != nil {
-		panic("Starting GIN Server: " + err.Error())
+	if common.CheckErr(err, "gin start") {
+		os.Exit(1)
 	}
 }
