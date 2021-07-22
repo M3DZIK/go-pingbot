@@ -10,10 +10,9 @@ import (
 
 func GetAll(c *gin.Context) {
 	results, err := database.GetAll()
-
 	// Error Handling
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
+		c.JSON(http.StatusInternalServerError, json{
 			"success": false,
 			"message": "Error fetching URLs!",
 		})
@@ -24,7 +23,7 @@ func GetAll(c *gin.Context) {
 
 	// DB Is Empty
 	if results == nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
+		c.JSON(http.StatusNotFound, json{
 			"success": false,
 			"message": "Database is empty!",
 		})
@@ -40,7 +39,7 @@ func GetAll(c *gin.Context) {
 		})
 	}
 
-	c.JSON(http.StatusOK, gin.H{
+	c.JSON(http.StatusOK, json{
 		"success": true,
 		"db":      db,
 	})

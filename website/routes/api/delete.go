@@ -13,7 +13,7 @@ func Delete(c *gin.Context) {
 
 	d, err := base64.StdEncoding.DecodeString(url)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
+		c.JSON(http.StatusBadRequest, json{
 			"success": false,
 			"message": "Error Parsing Base64!",
 		})
@@ -28,7 +28,7 @@ func Delete(c *gin.Context) {
 	})
 
 	if r.DeletedCount <= 0 {
-		c.JSON(http.StatusInternalServerError, gin.H{
+		c.JSON(http.StatusNotFound, json{
 			"success": false,
 			"message": "Not found!",
 		})
@@ -37,7 +37,7 @@ func Delete(c *gin.Context) {
 	}
 
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
+		c.JSON(http.StatusInternalServerError, json{
 			"success": false,
 			"message": "Error Deleting from Database!",
 		})
@@ -45,8 +45,8 @@ func Delete(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
+	c.JSON(http.StatusOK, json{
 		"success": true,
-		"message": "Deleted",
+		"message": "Deleted!",
 	})
 }

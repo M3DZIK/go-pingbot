@@ -11,7 +11,7 @@ func Insert(c *gin.Context) {
 	var post database.URL
 	err := c.BindJSON(&post)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusBadRequest, json{
 			"success": false,
 			"message": "Error Binding JSON!",
 		})
@@ -20,7 +20,7 @@ func Insert(c *gin.Context) {
 	}
 
 	if len(post.URL) < 1 {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusBadRequest, json{
 			"success": false,
 			"message": "URL was not Provided!",
 		})
@@ -30,7 +30,7 @@ func Insert(c *gin.Context) {
 
 	_, err = http.Get(post.URL)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
+		c.JSON(http.StatusBadRequest, json{
 			"success": false,
 			"message": "Error Pinging URL!",
 		})
@@ -42,7 +42,7 @@ func Insert(c *gin.Context) {
 		URL: post.URL,
 	})
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
+		c.JSON(http.StatusInternalServerError, json{
 			"success": false,
 			"message": "Error Inserting to Database!",
 		})
@@ -50,7 +50,7 @@ func Insert(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{
+	c.JSON(http.StatusOK, json{
 		"success": true,
 		"url":     post.URL,
 	})
