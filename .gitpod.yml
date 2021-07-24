@@ -1,5 +1,5 @@
-ports:
-  - port: 8080
+image:
+  file: .gitpod.Dockerfile
 
 checkoutLocation: "go/src/pingbot"
 workspaceLocation: "go/src/pingbot"
