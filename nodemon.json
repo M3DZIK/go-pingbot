@@ -3,5 +3,5 @@
   "ext": "go json",
   "signal": "SIGTERM",
   "quiet": true,
-  "exec": "clear && go build -o pingbot.out || exit 1 && ./pingbot.out || exit 1"
+  "exec": "clear && go build -o pingbot.out || exit 1 && ./pingbot.out || echo \"[\\033[0;31mPROGRAM PANIC\\033[0m]\" || exit 1"
 }

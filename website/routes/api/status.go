@@ -21,14 +21,14 @@ func Status(c *gin.Context) {
 	pid := os.Getpid()
 
 	c.JSON(http.StatusOK, json{
-		"success": true,
 		"ping": json{
 			"all":     backend.AmountSuccess + backend.AmountErr,
 			"success": backend.AmountSuccess,
 			"err":     backend.AmountErr,
 		},
-		"stats": json{
+		"sys": json{
 			"pid": pid,
+			"os":  runtime.GOOS,
 			"mem": json{
 				"alloc":      mb(m.Alloc),
 				"totalalloc": mb(m.TotalAlloc),
@@ -38,9 +38,13 @@ func Status(c *gin.Context) {
 			"cpu": json{
 				"usage": cpu(pid),
 				"num":   runtime.NumCPU(),
+				"arch":  runtime.GOARCH,
 			},
 		},
-		"v": config.Version,
+		"v": json{
+			"go":      runtime.Version(),
+			"release": config.Version,
+		},
 	})
 }
 

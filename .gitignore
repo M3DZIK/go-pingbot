@@ -8,16 +8,8 @@
 *.dll
 *.so
 *.dylib
-
-# Test binary, built with `go test -c`
-*.test
-
-# Output binary
 *.out
 dist/
 
-# Sums
-MD5SUM
-SHA256SUM
-
-VERSION
+# Test binary, built with `go test -c`
+*.test

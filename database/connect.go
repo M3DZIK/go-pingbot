@@ -15,18 +15,32 @@ import (
 var Client mongo.Client
 var Coll *mongo.Collection
 
-func Connect() {
+func Connect(retry ...int8) {
+	if len(retry) == 0 {
+		retry = append(retry, 0)
+	}
+
+	if retry[0] == 2 {
+		os.Exit(1)
+	}
+
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
 	Client, err := mongo.Connect(ctx, options.Client().ApplyURI(config.Mongo_URI))
 	if common.CheckErr(err, "connect to db") {
-		os.Exit(1)
+		time.Sleep(2 * time.Second)
+		Connect(retry[0] + 1)
+
+		return
 	}
 
 	err = Client.Ping(ctx, readpref.Primary())
 	if common.CheckErr(err, "ping db") {
-		os.Exit(1)
+		time.Sleep(2 * time.Second)
+		Connect(retry[0] + 1)
+
+		return
 	}
 
 	Coll = Client.Database(config.Mongo_DB).Collection(config.Mongo_Collection)
