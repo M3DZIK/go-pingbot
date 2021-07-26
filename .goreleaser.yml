@@ -12,6 +12,10 @@ builds:
 
     binary: '{{ .ProjectName }}.out'
 
+    ldflags:
+      - -s -w
+      - -X gitlab.com/gaming0skar123/go/pingbot/config.Version={{.RawVersion}}
+
 archives:
   - format: tar.gz
 
@@ -19,4 +23,6 @@ archives:
       - none*
 
 checksum:
-  name_template: 'checksums.txt'
+  name_template: 'md5_checksums.txt'
+
+  algorithm: md5

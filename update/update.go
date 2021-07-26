@@ -19,8 +19,8 @@ func Update() {
 		return
 	}
 
-	v := semver.MustParse(config.Version)
-	if !found || latest.Version.LTE(v) {
+	v, err := semver.Parse(config.Version)
+	if common.CheckErr(err, "parse version") || !found || latest.Version.LTE(v) {
 		return
 	}
 
