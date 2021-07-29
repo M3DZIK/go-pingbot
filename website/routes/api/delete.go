@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/gaming0skar123/go/pingbot/database"
+	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
 )
 
 func Delete(c *gin.Context) {
@@ -23,7 +23,7 @@ func Delete(c *gin.Context) {
 
 	url = string(d)
 
-	r, err := database.Delete(&database.URL{
+	r, err := mongo.Delete(&mongo.URL{
 		URL: url,
 	})
 

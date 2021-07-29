@@ -22,9 +22,9 @@ func Status(c *gin.Context) {
 
 	c.JSON(http.StatusOK, json{
 		"ping": json{
-			"all":     backend.AmountSuccess + backend.AmountErr,
-			"success": backend.AmountSuccess,
-			"err":     backend.AmountErr,
+			"all":     backend.Status.Error + backend.Status.Success,
+			"success": backend.Status.Success,
+			"err":     backend.Status.Error,
 		},
 		"sys": json{
 			"pid": pid,

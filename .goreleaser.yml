@@ -20,7 +20,9 @@ archives:
   - format: tar.gz
 
     files:
-      - none*
+      - LICENSE
+      - .env.schema
+      - config.schema.toml
 
 checksum:
   name_template: 'md5_checksums.txt'

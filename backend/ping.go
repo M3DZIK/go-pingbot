@@ -4,16 +4,14 @@ import (
 	"net/http"
 
 	"gitlab.com/gaming0skar123/go/pingbot/common"
-	"gitlab.com/gaming0skar123/go/pingbot/database"
+	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
+	"gitlab.com/gaming0skar123/go/pingbot/database/redis"
 )
-
-var AmountSuccess uint
-var AmountErr uint
 
 var checkErr = common.CheckErr
 
 func ping() {
-	results, err := database.GetAll()
+	results, err := mongo.GetAll()
 	if checkErr(err, "get all from db") {
 		return
 	}
@@ -23,23 +21,28 @@ func ping() {
 	}
 }
 
-func loop(value database.URL) {
+func loop(value mongo.URL) {
 	req, err := http.NewRequest("GET", value.URL, nil)
 	if checkErr(err, "new http request") {
-		AmountErr++
+		Status.Error++
 		return
 	}
 
 	client := http.DefaultClient
 	r, err := client.Do(req)
 	if checkErr(err, "ping url") {
-		AmountErr++
+		Status.Error++
 		return
 	}
 
 	if r.StatusCode >= 200 && r.StatusCode < 400 {
-		AmountSuccess++
+		Status.Success++
 	} else {
-		AmountErr++
+		Status.Error++
 	}
+
+	redis.StatusUpdate(redis.StatusType{
+		Success: Status.Success,
+		Error: Status.Error,
+	})
 }

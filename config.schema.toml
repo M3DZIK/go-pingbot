@@ -1,0 +1,15 @@
+[http]
+enabled=true # Enable Website
+port=8080    # Port to listen
+
+[backend]
+enabled=true # Enable Backend
+ping=3       # Ping every three minutes
+
+[autoupdate]
+enabled=true # Enable Auto Updater
+check=2      # Check every two minutes
+
+[cluster]
+id=1         # Cluster ID
+node=1       # Node ID

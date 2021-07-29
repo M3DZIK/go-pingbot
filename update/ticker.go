@@ -10,7 +10,7 @@ func Ticker() {
 	// Check on start
 	Update()
 
-	ticker := time.NewTicker(config.Latest_Version_Check)
+	ticker := time.NewTicker(config.Toml.AutoUpdate.Check * time.Minute)
 
 	quit := make(chan struct{})
 

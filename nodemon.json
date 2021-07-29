@@ -1,7 +1,7 @@
 {
   "watch": ["*"],
-  "ext": "go json",
+  "ext": "go toml",
   "signal": "SIGTERM",
   "quiet": true,
-  "exec": "clear && go build -o pingbot.out || exit 1 && ./pingbot.out || echo \"[\\033[0;31mPROGRAM PANIC\\033[0m]\" || exit 1"
+  "exec": "clear && go build -o pingbot.out || exit 1 && ./pingbot.out || echo \"[\\033[0;31mPROGRAM PANIC\\033[0m]\" || exit 1 && echo \"[\\033[0;31mPROGRAM END\\033[0m]\""
 }

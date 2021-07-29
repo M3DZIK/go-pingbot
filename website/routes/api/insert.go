@@ -4,11 +4,11 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/gaming0skar123/go/pingbot/database"
+	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
 )
 
 func Insert(c *gin.Context) {
-	var post database.URL
+	var post mongo.URL
 	err := c.BindJSON(&post)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, json{
@@ -38,7 +38,7 @@ func Insert(c *gin.Context) {
 		return
 	}
 
-	_, err = database.Insert(&database.URL{
+	_, err = mongo.Insert(&mongo.URL{
 		URL: post.URL,
 	})
 	if err != nil {

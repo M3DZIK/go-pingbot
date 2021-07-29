@@ -5,11 +5,11 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/gaming0skar123/go/pingbot/database"
+	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
 )
 
 func GetAll(c *gin.Context) {
-	results, err := database.GetAll()
+	results, err := mongo.GetAll()
 	// Error Handling
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, json{
@@ -31,12 +31,10 @@ func GetAll(c *gin.Context) {
 		return
 	}
 
-	var db []database.URL
+	var db []string
 
 	for _, value := range results {
-		db = append(db, database.URL{
-			URL: value.URL,
-		})
+		db = append(db, value.URL)
 	}
 
 	c.JSON(http.StatusOK, json{
