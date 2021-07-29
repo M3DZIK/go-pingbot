@@ -5,7 +5,6 @@ import (
 
 	"gitlab.com/gaming0skar123/go/pingbot/common"
 	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
-	"gitlab.com/gaming0skar123/go/pingbot/database/redis"
 )
 
 var checkErr = common.CheckErr
@@ -40,9 +39,4 @@ func loop(value mongo.URL) {
 	} else {
 		Status.Error++
 	}
-
-	redis.StatusUpdate(redis.StatusType{
-		Success: Status.Success,
-		Error: Status.Error,
-	})
 }
