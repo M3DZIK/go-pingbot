@@ -9,9 +9,9 @@ if ! go build -o pingbot.out; then
   exit 1
 else
     if ! ./pingbot.out; then
-    echo -e "${reset}[${red}PROGRAM PANIC${reset}]"
-    exit 1
-  else
-    echo -e "${reset}[${red}PROGRAM END${reset}]"
-  fi
+      echo -e "${reset}[${red}PROGRAM PANIC${reset}]"
+      exit 1
+    else
+      echo -e "${reset}[${red}PROGRAM END${reset}]"
+    fi
 fi

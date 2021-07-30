@@ -1,14 +1,10 @@
-name: Release
+name: Pull Request
 
 on:
-  push:
-    branches: [ main ]
-
-permissions:
-  contents: write
+  pull_request:
 
 jobs:
-  releaser:
+  pull:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,10 +15,6 @@ jobs:
         with:
           go-version: 1.16
 
-      - uses: go-semantic-release/action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
         with:
@@ -31,3 +23,8 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: dist
