@@ -7,7 +7,7 @@ import (
 )
 
 var Log = &logrus.Logger{
-	Out:       os.Stderr,
+	Out:       os.Stdout,
 	Formatter: new(logrus.TextFormatter),
 	Hooks:     make(logrus.LevelHooks),
 	Level:     logrus.InfoLevel,

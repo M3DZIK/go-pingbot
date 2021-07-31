@@ -31,14 +31,8 @@ func GetAll(c *gin.Context) {
 		return
 	}
 
-	var db []string
-
-	for _, value := range results {
-		db = append(db, value.URL)
-	}
-
 	c.JSON(http.StatusOK, json{
 		"success": true,
-		"db":      db,
+		"db":      results,
 	})
 }

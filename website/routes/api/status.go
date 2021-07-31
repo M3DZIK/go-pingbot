@@ -20,12 +20,20 @@ func Status(c *gin.Context) {
 
 	pid := os.Getpid()
 
-	c.JSON(http.StatusOK, json{
-		"ping": json{
+	var ping json
+
+	if config.Toml.Backend.Enabled {
+		ping = json{
 			"all":     backend.Status.Error + backend.Status.Success,
 			"success": backend.Status.Success,
 			"err":     backend.Status.Error,
-		},
+		}
+	} else {
+		ping = nil
+	}
+
+	c.JSON(http.StatusOK, json{
+		"ping": ping,
 		"sys": json{
 			"pid": pid,
 			"os":  runtime.GOOS,
@@ -44,6 +52,10 @@ func Status(c *gin.Context) {
 		"v": json{
 			"go":      runtime.Version(),
 			"release": config.Version,
+		},
+		"node": json{
+			"cluster": config.Toml.Cluster.ID,
+			"node":    config.Toml.Cluster.Node,
 		},
 	})
 }

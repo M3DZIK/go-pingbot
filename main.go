@@ -42,7 +42,4 @@ func main() {
 	}
 
 	wg.Wait()
-
-	//c := make(chan struct{})
-	//<-c
 }

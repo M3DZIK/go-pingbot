@@ -1,8 +1,8 @@
 package website
 
 import (
-	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -27,7 +27,7 @@ func Server() {
 
 	api.ApplyRoutes(router)
 
-	err := router.Run(fmt.Sprint(":", config.Toml.HTTP.Port))
+	err := router.Run(":" + strconv.Itoa(config.Toml.HTTP.Port))
 	if common.CheckErr(err, "gin start") {
 		os.Exit(1)
 	}

@@ -7,7 +7,7 @@ import (
 )
 
 func Index(c *gin.Context) {
-	c.JSON(http.StatusOK, map[string]interface{}{
+	c.JSON(http.StatusOK, gin.H{
 		"success": true,
 	})
 }

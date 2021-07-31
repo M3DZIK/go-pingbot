@@ -1,7 +1,9 @@
 package backend
 
 import (
+	"context"
 	"net/http"
+	"time"
 
 	"gitlab.com/gaming0skar123/go/pingbot/common"
 	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
@@ -11,7 +13,7 @@ var checkErr = common.CheckErr
 
 func ping() {
 	results, err := mongo.GetAll()
-	if checkErr(err, "get all from db") {
+	if checkErr(err, "get keys from db") {
 		return
 	}
 
@@ -21,7 +23,11 @@ func ping() {
 }
 
 func loop(value mongo.URL) {
-	req, err := http.NewRequest("GET", value.URL, nil)
+	// Timeout 1 minute
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Minute)
+	defer cancel()
+
+	req, err := http.NewRequestWithContext(ctx, "GET", value.URL, nil)
 	if checkErr(err, "new http request") {
 		Status.Error++
 		return
@@ -29,7 +35,7 @@ func loop(value mongo.URL) {
 
 	client := http.DefaultClient
 	r, err := client.Do(req)
-	if checkErr(err, "ping url") {
+	if err != nil {
 		Status.Error++
 		return
 	}

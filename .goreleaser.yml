@@ -23,6 +23,7 @@ archives:
       - LICENSE
       - .env.schema
       - config.schema.toml
+      - README.md
 
 checksum:
   name_template: 'md5_checksums.txt'

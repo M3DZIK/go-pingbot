@@ -38,8 +38,13 @@ func Insert(c *gin.Context) {
 		return
 	}
 
+	if post.Cluster == 0 {
+		post.Cluster = 1
+	}
+
 	_, err = mongo.Insert(&mongo.URL{
-		URL: post.URL,
+		URL:     post.URL,
+		Cluster: post.Cluster,
 	})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, json{

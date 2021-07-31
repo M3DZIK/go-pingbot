@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"go.mongodb.org/mongo-driver/bson"
+	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
 
 func GetAll() ([]URL, error) {
@@ -13,7 +13,9 @@ func GetAll() ([]URL, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	cursor, err := Coll.Find(ctx, bson.D{{}})
+	cursor, err := Coll.Find(ctx, json{
+		"cluster": config.Toml.Cluster.ID,
+	})
 	if err != nil {
 		return nil, err
 	}
