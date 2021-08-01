@@ -23,9 +23,7 @@ func Delete(c *gin.Context) {
 
 	url = string(d)
 
-	r, err := mongo.Delete(&mongo.URL{
-		URL: url,
-	})
+	r, err := mongo.Delete(url)
 
 	if r.DeletedCount <= 0 {
 		c.JSON(http.StatusNotFound, json{

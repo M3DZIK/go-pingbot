@@ -7,11 +7,13 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func Delete(url *URL) (*mongo.DeleteResult, error) {
+func Delete(url string) (*mongo.DeleteResult, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	result, err := Coll.DeleteOne(ctx, url)
+	result, err := Coll.DeleteOne(ctx, json{
+		"url": url,
+	})
 
 	return result, err
 }
