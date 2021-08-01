@@ -6,7 +6,9 @@ import (
 	_ "github.com/joho/godotenv/autoload"
 )
 
-// mongo
-var Mongo_URI = os.Getenv("MONGODB_URI")
-var Mongo_DB = os.Getenv("MONGODB_DB")
-var Mongo_Collection = os.Getenv("MONGODB_COLLECTION")
+var (
+	// mongo
+	Mongo_URI        = os.Getenv("MONGODB_URI")
+	Mongo_DB         = os.Getenv("MONGODB_DB")
+	Mongo_Collection = os.Getenv("MONGODB_COLLECTION")
+)

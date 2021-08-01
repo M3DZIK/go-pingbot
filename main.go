@@ -2,6 +2,7 @@ package main
 
 import (
 	"sync"
+	"time"
 
 	"gitlab.com/gaming0skar123/go/pingbot/backend"
 	"gitlab.com/gaming0skar123/go/pingbot/common"
@@ -40,6 +41,8 @@ func main() {
 	} else {
 		log.Warn("Auto Update -> Disabled")
 	}
+
+	config.StartTime = time.Now()
 
 	wg.Wait()
 }
