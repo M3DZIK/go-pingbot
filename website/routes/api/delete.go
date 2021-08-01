@@ -28,7 +28,7 @@ func Delete(c *gin.Context) {
 	if r.DeletedCount <= 0 {
 		c.JSON(http.StatusNotFound, json{
 			"success": false,
-			"message": "Not found!",
+			"message": "Not Found!",
 		})
 
 		return
