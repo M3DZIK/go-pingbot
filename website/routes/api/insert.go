@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -10,9 +9,9 @@ import (
 )
 
 func Insert(c *gin.Context) {
-	valid, claims, err := auth.Authorize(c)
-	if !valid {
-		c.JSON(http.StatusBadRequest, json{
+	auth := auth.AuthorizeJWT(c)
+	if !auth {
+		c.JSON(http.StatusUnauthorized, json{
 			"success": false,
 			"message": "Unauthed!",
 		})
@@ -20,17 +19,8 @@ func Insert(c *gin.Context) {
 		return
 	}
 
-	var user string
-
-	for key, val := range claims {
-		if key == "user" {
-			user = fmt.Sprintf("%q", val)
-			break
-		}
-	}
-
 	var post mongo.URL
-	err = c.BindJSON(&post)
+	err := c.BindJSON(&post)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, json{
 			"success": false,
@@ -66,7 +56,7 @@ func Insert(c *gin.Context) {
 	_, err = mongo.Insert(&mongo.URL{
 		URL:     post.URL,
 		Cluster: post.Cluster,
-		Owner:   user,
+		Owner:   "user",
 	})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, json{
