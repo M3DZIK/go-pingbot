@@ -11,4 +11,6 @@ var (
 	Mongo_URI        = os.Getenv("MONGODB_URI")
 	Mongo_DB         = os.Getenv("MONGODB_DB")
 	Mongo_Collection = os.Getenv("MONGODB_COLLECTION")
+
+	Password = os.Getenv("PASSWORD")
 )

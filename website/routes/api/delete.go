@@ -5,10 +5,24 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"gitlab.com/gaming0skar123/go/pingbot/config"
 	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
 )
 
 func Delete(c *gin.Context) {
+	const BEARER_SCHEMA = "Password"
+	authHeader := c.GetHeader("Authorization")
+	passwordString := authHeader[len(BEARER_SCHEMA)+1:]
+
+	if passwordString != config.Password {
+		c.JSON(http.StatusUnauthorized, json{
+			"success": false,
+			"message": "Unauth!",
+		})
+
+		return
+	}
+
 	url := c.Param("url")
 
 	d, err := base64.StdEncoding.DecodeString(url)
