@@ -3,7 +3,7 @@ module gitlab.com/gaming0skar123/go/pingbot
 go 1.16
 
 require (
-	github.com/BurntSushi/toml v0.3.1
+	github.com/BurntSushi/toml v0.4.0
 	github.com/MedzikUser/go-github-selfupdate v1.3.1
 	github.com/blang/semver/v4 v4.0.0
 	github.com/gin-contrib/cors v1.3.1
