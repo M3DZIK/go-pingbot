@@ -1,15 +1,36 @@
 package api
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
+	"gitlab.com/gaming0skar123/go/pingbot/website/routes/api/auth"
 )
 
 func Insert(c *gin.Context) {
+	valid, claims, err := auth.Authorize(c)
+	if !valid {
+		c.JSON(http.StatusBadRequest, json{
+			"success": false,
+			"message": "Unauthed!",
+		})
+
+		return
+	}
+
+	var user string
+
+	for key, val := range claims {
+		if key == "user" {
+			user = fmt.Sprintf("%q", val)
+			break
+		}
+	}
+
 	var post mongo.URL
-	err := c.BindJSON(&post)
+	err = c.BindJSON(&post)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, json{
 			"success": false,
@@ -45,6 +66,7 @@ func Insert(c *gin.Context) {
 	_, err = mongo.Insert(&mongo.URL{
 		URL:     post.URL,
 		Cluster: post.Cluster,
+		Owner:   user,
 	})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, json{
