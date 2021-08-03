@@ -7,7 +7,7 @@ require (
 	github.com/MedzikUser/go-github-selfupdate v1.3.1
 	github.com/blang/semver/v4 v4.0.0
 	github.com/gin-contrib/cors v1.3.1
-	github.com/gin-gonic/gin v1.7.2
+	github.com/gin-gonic/gin v1.7.3
 	github.com/go-playground/validator/v10 v10.8.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
