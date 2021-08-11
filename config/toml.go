@@ -15,6 +15,7 @@ type tomlConfig struct {
 	Backend    backendConfig
 	AutoUpdate autoUpdateConfig
 	Cluster    clusterConfig
+	MongoDB    mongoDBConfig
 }
 
 type httpConfig struct {
@@ -25,6 +26,7 @@ type httpConfig struct {
 type backendConfig struct {
 	Enabled bool
 	Ping    time.Duration
+	Cache   int
 }
 
 type autoUpdateConfig struct {
@@ -35,6 +37,11 @@ type autoUpdateConfig struct {
 type clusterConfig struct {
 	ID   int
 	Node int
+}
+
+type mongoDBConfig struct {
+	Database   string
+	Collection string
 }
 
 var Toml tomlConfig
@@ -49,8 +56,21 @@ func init() {
 			if !common.CheckErr(err, "download default config") {
 				_, err = toml.DecodeFile("./config.toml", &Toml)
 				common.CheckErr(err, "decode toml config")
+				os.Exit(1)
 			}
 		}
+	}
+
+	if Toml.Backend.Cache == 0 {
+		Toml.Backend.Cache = 5
+	}
+
+	if Toml.MongoDB.Collection != "" {
+		Mongo_Collection = Toml.MongoDB.Collection
+	}
+
+	if Toml.MongoDB.Database != "" {
+		Mongo_DB = Toml.MongoDB.Database
 	}
 }
 

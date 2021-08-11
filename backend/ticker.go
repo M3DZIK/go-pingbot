@@ -7,7 +7,8 @@ import (
 )
 
 func Ticker() {
-	// Ping on Start
+	// On Start
+	cache()
 	ping()
 
 	ticker := time.NewTicker(config.Toml.Backend.Ping * time.Minute)

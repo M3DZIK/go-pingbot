@@ -5,6 +5,7 @@ port=8080          # Port to listen
 [backend]
 enabled=true       # Enable Backend
 ping=3             # Ping every three minutes
+cache=5            # Get urls from db every five url pings
 
 [autoupdate]
 enabled=true       # Enable Auto Updater
