@@ -3,7 +3,6 @@ package backend
 import (
 	"context"
 	"net/http"
-	"sync"
 	"time"
 
 	"gitlab.com/gaming0skar123/go/pingbot/common"
@@ -17,24 +16,17 @@ var (
 
 func ping() {
 	if cacheRetry >= config.Toml.Backend.Cache {
-		cache()
+		cache(0)
 		cacheRetry = 0
 	}
 	cacheRetry++
 
-	var wg sync.WaitGroup
-
 	for _, url := range cacheURL {
-		go loop(wg, url)
+		go loop(url)
 	}
-
-	wg.Wait()
 }
 
-func loop(wg sync.WaitGroup, url string) {
-	wg.Add(1)
-	defer wg.Done()
-
+func loop(url string) {
 	// Timeout 1 minute
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Minute)
 	defer cancel()
