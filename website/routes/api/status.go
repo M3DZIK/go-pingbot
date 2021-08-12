@@ -6,8 +6,6 @@ import (
 	"net/http"
 	"os"
 	"runtime"
-	"strconv"
-	"time"
 
 	"github.com/MedzikUser/go-utils/common"
 	"github.com/gin-gonic/gin"
@@ -59,64 +57,9 @@ func Status(c *gin.Context) {
 		"node": json{
 			"cluster": config.Toml.Cluster.ID,
 			"node":    config.Toml.Cluster.Node,
-			"uptime":  uptime(),
+			"uptime":  common.Uptime(config.StartTime),
 		},
 	})
-}
-
-func uptime() string {
-	t := time.Since(config.StartTime)
-
-	var uptime string
-
-	var (
-		y int
-		d int
-	)
-
-	h := round(t.Hours())
-	m := round(t.Minutes())
-	s := round(t.Seconds())
-
-	for h/24 > 0 {
-		d++
-		h -= 24
-	}
-
-	for d/365 > 0 {
-		y++
-		d -= 365
-	}
-
-	if y > 0 {
-		uptime += strconv.Itoa(y) + "y "
-	}
-
-	if d > 0 {
-		uptime += strconv.Itoa(d) + "d "
-	}
-
-	if h > 0 {
-		uptime += strconv.Itoa(h) + "h "
-	}
-
-	if m > 0 {
-		uptime += strconv.Itoa(m-(round(t.Hours())*60)) + "m "
-	}
-
-	if s > 0 {
-		uptime += strconv.Itoa(s-(m*60)) + "s"
-	}
-
-	return uptime
-}
-
-func round(val float64) int {
-	if val < 0 {
-		return int(val - 1.0)
-	}
-
-	return int(val)
 }
 
 func mb(b uint64) string {
