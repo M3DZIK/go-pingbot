@@ -13,8 +13,8 @@ func GetAll() ([]URL, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	cursor, err := Coll.Find(ctx, json{
-		"cluster": config.Toml.Cluster.ID,
+	cursor, err := Coll.Find(ctx, URL{
+		Cluster: config.Toml.Cluster.ID,
 	})
 	if err != nil {
 		return nil, err

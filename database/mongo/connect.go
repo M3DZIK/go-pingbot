@@ -20,7 +20,7 @@ func Connect(retry ...int8) {
 		retry = append(retry, 0)
 	}
 
-	if retry[0] == 2 {
+	if retry[0] == 5 {
 		os.Exit(1)
 	}
 

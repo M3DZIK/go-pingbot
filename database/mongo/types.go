@@ -1,8 +1,6 @@
 package mongo
 
 type URL struct {
-	URL     string `bson:"_id"`
-	Cluster int    `bson:"cluster"`
+	URL     string `bson:"_id,omitempty" json:"url,omitempty"`
+	Cluster int    `bson:"cluster,omitempty" json:"cluster,omitempty"`
 }
-
-type json map[string]interface{}
