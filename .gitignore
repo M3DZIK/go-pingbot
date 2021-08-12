@@ -2,16 +2,13 @@
 .env
 .cache
 
-# Binaries for programs and plugins
+# Binaries
 *.exe
-*.exe~
-*.dll
-*.so
-*.dylib
 *.out
 dist/
 
 # Test binary, built with `go test -c`
 *.test
 
+# Configs
 config.toml

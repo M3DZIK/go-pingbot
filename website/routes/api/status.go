@@ -59,8 +59,7 @@ func Status(c *gin.Context) {
 		"node": json{
 			"cluster": config.Toml.Cluster.ID,
 			"node":    config.Toml.Cluster.Node,
-			//"uptime":  time.Since(config.StartTime).String(),
-			"uptime": uptime(),
+			"uptime":  uptime(),
 		},
 	})
 }
