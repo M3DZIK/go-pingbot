@@ -4,9 +4,9 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/MedzikUser/go-utils/common"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/gaming0skar123/go/pingbot/common"
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 	"gitlab.com/gaming0skar123/go/pingbot/website/routes"
 	"gitlab.com/gaming0skar123/go/pingbot/website/routes/api"

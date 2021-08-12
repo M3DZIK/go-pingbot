@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"gitlab.com/gaming0skar123/go/pingbot/common"
+	"github.com/MedzikUser/go-utils/common"
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"

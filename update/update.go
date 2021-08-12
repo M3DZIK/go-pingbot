@@ -4,8 +4,8 @@ import (
 	"os"
 
 	"github.com/MedzikUser/go-github-selfupdate/selfupdate"
+	"github.com/MedzikUser/go-utils/common"
 	"github.com/blang/semver/v4"
-	"gitlab.com/gaming0skar123/go/pingbot/common"
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
 

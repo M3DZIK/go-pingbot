@@ -9,10 +9,10 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/MedzikUser/go-utils/common"
 	"github.com/gin-gonic/gin"
 	"github.com/struCoder/pidusage"
 	"gitlab.com/gaming0skar123/go/pingbot/backend"
-	"gitlab.com/gaming0skar123/go/pingbot/common"
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
 

@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/BurntSushi/toml"
-	"gitlab.com/gaming0skar123/go/pingbot/common"
+	"github.com/MedzikUser/go-utils/common"
 )
 
 type tomlConfig struct {
