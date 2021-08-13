@@ -41,6 +41,8 @@ github.com/MedzikUser/go-utils v0.0.0 h1:69tLs7g0vK7GEt0GXVTq8/eSmsnBLOzmomrGtdT
 github.com/MedzikUser/go-utils v0.0.0/go.mod h1:fRjF5g45iBpgaSylXWDxM1U++na14eJmmx5DwXz0vAE=
 github.com/MedzikUser/go-utils v0.0.1 h1:oG/ep8wFg3FVxgc6u+XwUfNPiikFvkW1piMkKKByFIE=
 github.com/MedzikUser/go-utils v0.0.1/go.mod h1:fRjF5g45iBpgaSylXWDxM1U++na14eJmmx5DwXz0vAE=
+github.com/MedzikUser/go-utils v0.1.0 h1:BLgodUfi4aqa8LgOEIAdBkr7MtaTcip0GODC8QdyS6c=
+github.com/MedzikUser/go-utils v0.1.0/go.mod h1:fRjF5g45iBpgaSylXWDxM1U++na14eJmmx5DwXz0vAE=
 github.com/blang/semver/v4 v4.0.0 h1:1PFHFE6yCCTv8C1TeyNNarDzntLi7wMI5i/pzqYIsAM=
 github.com/blang/semver/v4 v4.0.0/go.mod h1:IbckMUScFkM3pff0VJDNKRiT6TG/YpiHIM2yvyW5YoQ=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
