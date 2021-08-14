@@ -1,14 +1,15 @@
 package main
 
 import (
+	"os"
 	"sync"
 	"time"
 
 	"github.com/MedzikUser/go-utils/common"
+	"github.com/MedzikUser/go-utils/updater"
 	"gitlab.com/gaming0skar123/go/pingbot/backend"
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
-	"gitlab.com/gaming0skar123/go/pingbot/update"
 	"gitlab.com/gaming0skar123/go/pingbot/website"
 )
 
@@ -37,7 +38,20 @@ func main() {
 
 	if config.Toml.AutoUpdate.Enabled {
 		wg.Add(1)
-		go update.Ticker()
+
+		client := updater.Client{
+			GitHub:     config.GH_Repo,
+			CheckEvery: config.Toml.AutoUpdate.Check * time.Minute,
+			Version:    config.Version,
+			Binary:     "pingbot.out",
+			AfterUpdate: func() {
+				log.Info("Updated!")
+
+				os.Exit(1)
+			},
+		}
+
+		go client.AutoUpdater()
 	} else {
 		log.Warn("Auto Update -> Disabled")
 	}
