@@ -11,4 +11,7 @@ var (
 	Mongo_URI        = os.Getenv("MONGODB_URI")
 	Mongo_DB         = os.Getenv("MONGODB_DB")
 	Mongo_Collection = os.Getenv("MONGODB_COLLECTION")
+
+	// github
+	GH_Token = os.Getenv("GH_TOKEN")
 )
