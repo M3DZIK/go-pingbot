@@ -46,7 +46,7 @@ func Status(c *gin.Context) {
 			"cpu": json{
 				"usage": cpu.Usage,
 				"num":   cpu.Num,
-				"arch":  cpu.Usage,
+				"arch":  cpu.Arch,
 			},
 		},
 		"v": json{
