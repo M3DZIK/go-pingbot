@@ -1,15 +1,13 @@
 package api
 
 import (
-	"fmt"
-	"math"
 	"net/http"
 	"os"
 	"runtime"
 
 	"github.com/MedzikUser/go-utils/common"
+	"github.com/MedzikUser/go-utils/stats"
 	"github.com/gin-gonic/gin"
-	"github.com/struCoder/pidusage"
 	"gitlab.com/gaming0skar123/go/pingbot/backend"
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
@@ -18,7 +16,9 @@ func Status(c *gin.Context) {
 	var m runtime.MemStats
 	runtime.ReadMemStats(&m)
 
-	pid := os.Getpid()
+	mem := stats.Memory()
+	cpu, err := stats.CPU()
+	common.CheckErr(err, "cpu stat")
 
 	var ping json
 
@@ -35,18 +35,18 @@ func Status(c *gin.Context) {
 	c.JSON(http.StatusOK, json{
 		"ping": ping,
 		"sys": json{
-			"pid": pid,
+			"pid": os.Getpid(),
 			"os":  runtime.GOOS,
 			"mem": json{
-				"alloc":      mb(m.Alloc),
-				"totalalloc": mb(m.TotalAlloc),
-				"sys":        mb(m.Sys),
-				"numgc":      m.NumGC,
+				"alloc":      mem.Alloc,
+				"totalalloc": mem.TotalAlloc,
+				"sys":        mem.Sys,
+				"numgc":      mem.NumGC,
 			},
 			"cpu": json{
-				"usage": cpu(pid),
-				"num":   runtime.NumCPU(),
-				"arch":  runtime.GOARCH,
+				"usage": cpu.Usage,
+				"num":   cpu.Num,
+				"arch":  cpu.Usage,
 			},
 		},
 		"v": json{
@@ -60,19 +60,4 @@ func Status(c *gin.Context) {
 			"uptime":  common.Uptime(config.StartTime),
 		},
 	})
-}
-
-func mb(b uint64) string {
-	return fmt.Sprintf("%d MB", b/1000/1000)
-}
-
-func cpu(pid int) *string {
-	sysInfo, err := pidusage.GetStat(pid)
-	if common.CheckErr(err, "get cpu stat") {
-		return nil
-	}
-
-	s := fmt.Sprint(math.Round(sysInfo.CPU*100)/100, "%")
-
-	return &s
 }
