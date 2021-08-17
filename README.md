@@ -1,5 +1,8 @@
 # Pingbot - Backend
 
+![Repo Size](https://img.shields.io/github/repo-size/MedzikUser/go-pingbot)
+![Build](https://img.shields.io/github/workflow/status/MedzikUser/go-pingbot/Release/main)
+
 ## Install Pre-Compile binary
 
 * Linux amd64

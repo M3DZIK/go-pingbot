@@ -21,10 +21,10 @@ archives:
   - format: tar.gz
 
     files:
-      - LICENSE
       - .env.schema
       - config.schema.toml
       - README.md
+      - LICENSE
 
 checksum:
   name_template: 'md5_checksums.txt'
