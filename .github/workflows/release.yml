@@ -3,6 +3,7 @@ name: Release
 on:
   push:
     branches: [ main ]
+  pull_request:
 
 permissions:
   contents: write
@@ -22,14 +23,13 @@ jobs:
           go-version: 1.17
 
       - name: Semantic Release
+        if: github.event_name != 'pull_request'
         uses: go-semantic-release/action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: '0'
+      - name: Remove Local Changes
+        run: git stash -u
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
@@ -39,3 +39,8 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: dist
