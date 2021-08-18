@@ -40,11 +40,11 @@ func main() {
 		wg.Add(1)
 
 		client := updater.Client{
-			GitHub:     config.GH_Repo,
+			GitHub:      config.GH_Repo,
 			GitHubToken: config.GH_Token,
-			CheckEvery: config.Toml.AutoUpdate.Check * time.Minute,
-			Version:    config.Version,
-			Binary:     "pingbot.out",
+			CheckEvery:  config.Toml.AutoUpdate.Check * time.Minute,
+			Version:     config.Version,
+			Binary:      "pingbot.out",
 			AfterUpdate: func() {
 				log.Info("Updated!")
 
