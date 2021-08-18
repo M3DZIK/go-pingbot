@@ -28,8 +28,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Remove Local Changes
-        run: git stash -u
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
