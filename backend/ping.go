@@ -9,10 +9,7 @@ import (
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
 
-var (
-	checkErr   = common.CheckErr
-	cacheRetry int
-)
+var cacheRetry int
 
 func ping() {
 	if cacheRetry >= config.Toml.Backend.Cache {
@@ -32,7 +29,7 @@ func loop(url string) {
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
-	if checkErr(err, "new http request") {
+	if common.CheckErr(err, "new http request") {
 		Status.Error++
 		return
 	}

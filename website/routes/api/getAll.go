@@ -10,11 +10,10 @@ import (
 
 func GetAll(c *gin.Context) {
 	results, err := mongo.GetAll()
-	// Error Handling
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, json{
 			"success": false,
-			"message": "Error fetching URLs!",
+			"message": "Error get URLs from Database!",
 		})
 		fmt.Println(err)
 
