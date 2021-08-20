@@ -2,7 +2,6 @@ package api
 
 import (
 	"net/http"
-	"os"
 	"runtime"
 
 	"github.com/MedzikUser/go-utils/common"
@@ -35,7 +34,7 @@ func Status(c *gin.Context) {
 	c.JSON(http.StatusOK, json{
 		"ping": ping,
 		"sys": json{
-			"pid": os.Getpid(),
+			"pid": cpu.PID,
 			"os":  runtime.GOOS,
 			"mem": json{
 				"alloc":      mem.Alloc,
