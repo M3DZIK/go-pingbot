@@ -20,8 +20,11 @@ func Server() {
 
 	router = gin.New()
 
-	// Allows all origins
-	router.Use(cors.Default())
+	// Fix cors
+	configCors := cors.DefaultConfig()
+	configCors.AllowOrigins = []string{"https://www.pingbot.cf"}
+
+	router.Use(cors.New(configCors))
 
 	router.GET("/", routes.Index)
 
