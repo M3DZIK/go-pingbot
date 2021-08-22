@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 # Colors
-red="\e[0;91m"
-reset="\e[0m"
+RED="\e[0;91m"
+NC="\e[0m" # No Color
 
 if ! go build -o pingbot.out; then
-  echo -e "${reset}[${red}COMPILE ERROR${reset}]"
+  echo -e "${reset}[${RED}COMPILE ERROR${NC}]"
   exit 1
 else
     if ! ./pingbot.out; then
-      echo -e "${reset}[${red}PROGRAM PANIC${reset}]"
+      echo -e "${reset}[${RED}PROGRAM PANIC${NC}]"
       exit 1
     else
-      echo -e "${reset}[${red}PROGRAM END${reset}]"
+      echo -e "${reset}[${RED}PROGRAM END${NC}]"
     fi
 fi

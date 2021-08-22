@@ -9,7 +9,29 @@ This application "pings" websites every few minutes (to be set in config). It ca
 
 * 💻 Linux amd64
   * [Download](https://github.com/MedzikUser/go-pingbot/releases) latest version
-  * Unpack file `tar xzf pingbot_{VERSION}_linux_amd64.tar.gz`
-  * Create an .env and config.toml file and complete according to .env.schema and config.schema.toml
-  * Add permissions `chmod +rwx pingbot.out`
-  * Run binary `./pingbot.out`
+  * Unpack file `tar xzf pingbot_*_linux_amd64.tar.gz`
+  * Done your binary is `pingbot.out`
+
+## Compile from Source Code
+Not recommended because automatic updates don't work
+
+### Requirements
+
+* [Go](https://golang.org/dl) (recommended latest version)
+
+### Compile
+
+* Download source code `git clone https://github.com/MedzikUser/go-pingbot.git --depth 1`
+* Go to folder with source code `cd go-pingbot`
+* Download dependencies `go mod tidy`
+* Build `go build -o pingbot.out`
+* Done your compined binary is `pingbot.out`
+
+## Configurate
+
+* Complete .env according to .env.schema
+* And fill in config.toml according to config.schema.toml
+
+## Run
+
+* `./pingbot.out`

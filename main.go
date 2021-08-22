@@ -42,14 +42,15 @@ func main() {
 		client := updater.Client{
 			GitHub:      config.GH_Repo,
 			GitHubToken: config.GH_Token,
-			CheckEvery:  config.Toml.AutoUpdate.Check * time.Minute,
 			Version:     config.Version,
 			Binary:      "pingbot.out",
+			CheckEvery:  config.Toml.AutoUpdate.Check * time.Minute,
 			AfterUpdate: func() {
 				log.Info("Updated!")
 
 				os.Exit(1)
 			},
+			Major: false,
 		}
 
 		go client.AutoUpdater()
