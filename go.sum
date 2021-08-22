@@ -39,6 +39,8 @@ github.com/MedzikUser/go-github-selfupdate v1.3.1 h1:PlLrOMEucL8B2LNRUaceAgvu17J
 github.com/MedzikUser/go-github-selfupdate v1.3.1/go.mod h1:vq1/KNWXN7R/aKZFD5p2rsIdQ+2FSXnlIts1QHEZCM4=
 github.com/MedzikUser/go-utils v0.3.3 h1:2FucBvH/DK7KYQKT70GDLR9pT/kBn0lgUBEbZvGCpBs=
 github.com/MedzikUser/go-utils v0.3.3/go.mod h1:xP+KbYBL9TESTLP4vWnvIT0v+uq5reR4l5S7Nq4eeKo=
+github.com/MedzikUser/go-utils v0.3.4 h1:8E9VD2QQ17UMKhdGxvxjpVlAqaSfEGRJjKt/YBGs2xo=
+github.com/MedzikUser/go-utils v0.3.4/go.mod h1:xP+KbYBL9TESTLP4vWnvIT0v+uq5reR4l5S7Nq4eeKo=
 github.com/blang/semver/v4 v4.0.0 h1:1PFHFE6yCCTv8C1TeyNNarDzntLi7wMI5i/pzqYIsAM=
 github.com/blang/semver/v4 v4.0.0/go.mod h1:IbckMUScFkM3pff0VJDNKRiT6TG/YpiHIM2yvyW5YoQ=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
