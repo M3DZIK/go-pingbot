@@ -5,21 +5,21 @@
 
 This application "pings" websites every few minutes (to be set in config). It can be used to keep the application alive on e.g. [glitch.me](https://glitch.com/) or [repl.it](https://replit.com/).
 
-## Install Pre-Compile binary
+## ⚡ Install Pre-Compile binary
 
 * 💻 Linux amd64
   * [Download](https://github.com/MedzikUser/go-pingbot/releases) latest version
   * Unpack file `tar xzf pingbot_*_linux_amd64.tar.gz`
   * Done your binary is `pingbot.out`
 
-## Compile from Source Code
-Not recommended because automatic updates don't work
+## 👨‍💻 Compile from Source Code
+‼️ Not recommended because automatic updates don't work
 
-### Requirements
+### 🖥️ Requirements
 
 * [Go](https://golang.org/dl) (recommended latest version)
 
-### Compile
+### ⭐ Compile
 
 * Download source code `git clone https://github.com/MedzikUser/go-pingbot.git --depth 1`
 * Go to folder with source code `cd go-pingbot`
@@ -27,11 +27,11 @@ Not recommended because automatic updates don't work
 * Build `go build -o pingbot.out`
 * Done your compined binary is `pingbot.out`
 
-## Configurate
+## ⚙️ Configurate
 
 * Complete .env according to .env.schema
 * And fill in config.toml according to config.schema.toml
 
-## Run
+## 🔧 Run
 
 * `./pingbot.out`
