@@ -1,4 +1,4 @@
-name: release
+name: CI
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  releaser:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,6 +21,32 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
+
+      - name: Setup Git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: tidy
+        run: |
+          go mod tidy
+          git add .
+          git diff-index --quiet HEAD || git commit -m "go mod tidy"
+
+      - name: gofmt
+        run: |
+          go fmt ./...
+          git add .
+          git diff-index --quiet HEAD || git commit -m "gofmt"
+
+      - name: Pull changes
+        run: git pull -r
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
       - name: Semantic Release
         if: github.event_name != 'pull_request'
