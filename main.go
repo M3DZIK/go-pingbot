@@ -60,6 +60,5 @@ func main() {
 
 	config.StartTime = time.Now()
 
-  
 	wg.Wait()
 }
