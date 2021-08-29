@@ -25,6 +25,7 @@ archives:
       - config.schema.toml
       - README.md
       - LICENSE
+      - start.sh
 
 checksum:
   name_template: 'md5_checksums.txt'
