@@ -16,6 +16,7 @@ type tomlConfig struct {
 	AutoUpdate autoUpdateConfig
 	Cluster    clusterConfig
 	MongoDB    mongoDBConfig
+	Options    optionsConfig
 }
 
 type httpConfig struct {
@@ -42,6 +43,10 @@ type clusterConfig struct {
 type mongoDBConfig struct {
 	Database   string
 	Collection string
+}
+
+type optionsConfig struct {
+	Stop_After_Ping bool
 }
 
 var Toml tomlConfig

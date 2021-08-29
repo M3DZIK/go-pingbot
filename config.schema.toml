@@ -1,20 +1,23 @@
 [http]
-enabled=true       # Enable Website
-port=8080          # Port to listen
+enabled=true          # Enable Website
+port=8080             # Port to listen
 
 [backend]
-enabled=true       # Enable Backend
-ping=3             # Ping every three minutes
-cache=5            # Get urls from db every five url pings
+enabled=true          # Enable Backend
+ping=3                # Ping every three minutes
+cache=5               # Get urls from db every five url pings
 
 [autoupdate]
-enabled=true       # Enable Auto Updater
-check=2            # Check every two minutes
+enabled=true          # Enable Auto Updater
+check=2               # Check every two minutes
 
 [cluster]
-id=1               # Cluster ID
-node=1             # Node ID
+id=1                  # Cluster ID
+node=1                # Node ID
 
 [mongodb]
-database="PingBot" # MongoDB Database Name
-collection="URL"   # MongoDB Collection Name
+database="PingBot"    # MongoDB Database Name
+collection="URL"      # MongoDB Collection Name
+
+[options]
+stop_after_ping=false # Stop after all pings

@@ -11,7 +11,7 @@ import (
 
 var cacheRetry int
 
-func ping() {
+func ping() int {
 	if cacheRetry >= config.Toml.Backend.Cache {
 		cache(0)
 		cacheRetry = 0
@@ -21,6 +21,8 @@ func ping() {
 	for _, url := range cacheURL {
 		go loop(url)
 	}
+
+	return len(cacheURL)
 }
 
 func loop(url string) {
