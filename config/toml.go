@@ -46,7 +46,8 @@ type mongoDBConfig struct {
 }
 
 type optionsConfig struct {
-	Stop_After_Ping bool
+	Stop_After_Ping         bool
+	Stop_After_Ping_Timeout time.Duration
 }
 
 var Toml tomlConfig

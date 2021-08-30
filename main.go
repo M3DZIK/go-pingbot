@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"sync"
 	"time"
@@ -48,14 +47,7 @@ func main() {
 	}
 
 	if config.Toml.Options.Stop_After_Ping {
-		dbNum := backend.StopAfterPing()
-
-		fmt.Println()
-
-		log.Info("DB Size -> ", dbNum)
-		log.Info("Pinged  -> ", backend.Status.Success+backend.Status.Error)
-		log.Info("Success -> ", backend.Status.Success)
-		log.Info("Error   -> ", backend.Status.Error)
+		backend.StopAfterPing()
 
 		os.Exit(0)
 	}
