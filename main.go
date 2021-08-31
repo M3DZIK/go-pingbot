@@ -62,11 +62,19 @@ func main() {
 			switch char {
 			case 'y':
 				client.Major = true
-				client.Update()
+				err := client.Update()
+				if err != nil {
+					log.Error(err)
+					os.Exit(1)
+				}
 
 			case 'Y':
 				client.Major = true
-				client.Update()
+				err := client.Update()
+				if err != nil {
+					log.Error(err)
+					os.Exit(1)
+				}
 
 			default:
 				log.Warn("Canceled!")
