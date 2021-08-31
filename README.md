@@ -34,4 +34,4 @@ This application "pings" websites every few minutes (to be set in config). It ca
 
 ## 🔧 Run
 
-* `./pingbot.out`
+* `./pingbot.out` or `./start.sh` (auto restart e.g. if exit on update is enabled)
