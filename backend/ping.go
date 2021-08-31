@@ -33,6 +33,7 @@ func loop(url string) {
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if common.CheckErr(err, "new http request") {
 		Status.Error++
+
 		return
 	}
 
@@ -40,6 +41,7 @@ func loop(url string) {
 	r, err := client.Do(req)
 	if err != nil {
 		Status.Error++
+
 		return
 	}
 

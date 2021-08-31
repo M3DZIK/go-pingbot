@@ -1,12 +1,15 @@
 package main
 
 import (
+	"bufio"
+	"fmt"
 	"os"
 	"sync"
 	"time"
 
 	"github.com/MedzikUser/go-utils/common"
 	"github.com/MedzikUser/go-utils/updater"
+	"github.com/jpillora/opts"
 	"gitlab.com/gaming0skar123/go/pingbot/backend"
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
@@ -15,12 +18,68 @@ import (
 
 var log = common.Log
 
+type cmdOpts struct {
+	Update bool `opts:"help=update version to latest e.g. if update is major"`
+}
+
 func main() {
 	log.Info("You're using verion: ", config.Version)
 
 	var wg sync.WaitGroup
 
 	mongo.Connect()
+
+	c := cmdOpts{}
+
+	opts.Parse(&c)
+
+	if c.Update {
+		client := updater.Client{
+			GitHub:      config.GH_Repo,
+			GitHubToken: config.GH_Token,
+			Version:     config.Version,
+			Binary:      "pingbot.out",
+			CheckEvery:  config.Toml.AutoUpdate.Check * time.Minute,
+			AfterUpdate: func() {
+				log.Info("Updated!")
+
+				if !config.Toml.Options.Stop_After_Ping {
+					os.Exit(0)
+				}
+			},
+			Major: false,
+		}
+
+		err := client.Update()
+		if err != nil && err.Error() == "major update" {
+			fmt.Print("Update to new major version? (y/N) ")
+			reader := bufio.NewReader((os.Stdin))
+			char, _, err := reader.ReadRune()
+			if err != nil {
+				fmt.Println(err)
+			}
+
+			switch char {
+			case 'y':
+				client.Major = true
+				client.Update()
+
+			case 'Y':
+				client.Major = true
+				client.Update()
+
+			default:
+				log.Warn("Canceled!")
+				os.Exit(2)
+			}
+		} else if err != nil {
+			log.Error(err)
+			os.Exit(1)
+		} else {
+			log.Info("You're using latest version!")
+			os.Exit(0)
+		}
+	}
 
 	if config.Toml.AutoUpdate.Enabled {
 		wg.Add(1)
