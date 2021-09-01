@@ -71,5 +71,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          path: dist/*.tar.gz
+          path: dist/*.tar*
           retention-days: 10

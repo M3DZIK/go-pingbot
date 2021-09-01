@@ -1,6 +1,6 @@
 FROM gitpod/workspace-full
 
-# GoReleaser
+# Tools
 RUN curl -sfL https://install.goreleaser.com/github.com/goreleaser/goreleaser.sh | sh
 
 RUN sudo mv bin/* /usr/bin/ && \
