@@ -9,7 +9,7 @@ This application "pings" websites every few minutes (to be set in config). It ca
 
 * 💻 Linux amd64
   * [Download](https://github.com/MedzikUser/go-pingbot/releases) latest version
-  * Unpack file `tar xzf pingbot_*_linux_amd64.tar.gz`
+  * Unpack file `tar xf pingbot_*_linux_amd64.tar.xz`
   * Done your binary is `pingbot.out`
 
 ## 👨‍💻 Compile from Source Code
@@ -29,7 +29,7 @@ This application "pings" websites every few minutes (to be set in config). It ca
 
 ## ⚙️ Configurate
 
-* Complete .env according to .env.schema
+* Complete .env according to schema.env
 * And fill in config.toml according to config.schema.toml
 
 ## 🔧 Run

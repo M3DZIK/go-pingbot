@@ -1,5 +1,8 @@
 # Dot Files
-.env
+*.env*
+!schema.env
+
+# Cache
 .cache
 
 # Binaries
