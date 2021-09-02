@@ -27,8 +27,6 @@ func main() {
 
 	var wg sync.WaitGroup
 
-	mongo.Connect()
-
 	c := cmdOpts{}
 
 	opts.Parse(&c)
@@ -88,6 +86,8 @@ func main() {
 			os.Exit(0)
 		}
 	}
+	
+	mongo.Connect()
 
 	if config.Toml.AutoUpdate.Enabled {
 		wg.Add(1)
