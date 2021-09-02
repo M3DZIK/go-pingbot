@@ -2,7 +2,8 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: 
+      - main
   pull_request:
 
 permissions:
@@ -12,7 +13,8 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout v1
+        if: github.event_name != 'pull_request'
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -23,6 +25,7 @@ jobs:
           go-version: 1.17
 
       - name: Setup Git
+        if: github.event_name != 'pull_request'
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -58,7 +61,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Checkout
+      - name: Checkout v2
         uses: actions/checkout@v2
         with:
           fetch-depth: '0'
