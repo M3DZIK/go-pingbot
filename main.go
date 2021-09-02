@@ -86,7 +86,7 @@ func main() {
 			os.Exit(0)
 		}
 	}
-	
+
 	mongo.Connect()
 
 	if config.Toml.AutoUpdate.Enabled {
