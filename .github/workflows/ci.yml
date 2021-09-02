@@ -28,21 +28,25 @@ jobs:
           git config --local user.name "github-actions[bot]"
 
       - name: tidy
+        if: github.event_name != 'pull_request'
         run: |
           go mod tidy
           git add .
           git diff-index --quiet HEAD || git commit -m "go mod tidy"
 
       - name: gofmt
+        if: github.event_name != 'pull_request'
         run: |
           go fmt ./...
           git add .
           git diff-index --quiet HEAD || git commit -m "gofmt"
 
       - name: Pull changes
+        if: github.event_name != 'pull_request'
         run: git pull -r
 
       - name: Push changes
+        if: github.event_name != 'pull_request'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
