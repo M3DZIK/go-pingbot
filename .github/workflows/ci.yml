@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: 
+    branches:
       - main
   pull_request:
 
@@ -33,7 +33,7 @@ jobs:
       - name: tidy
         if: github.event_name != 'pull_request'
         run: |
-          go mod tidy
+          go mod tidy -go=1.17
           git add .
           git diff-index --quiet HEAD || git commit -m "go mod tidy"
 
