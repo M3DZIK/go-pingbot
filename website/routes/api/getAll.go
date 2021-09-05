@@ -1,37 +1,17 @@
 package api
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
+	"gitlab.com/gaming0skar123/go/pingbot/backend"
 )
 
 func GetAll(c *gin.Context) {
-	results, err := mongo.GetAll()
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, json{
-			"success": false,
-			"message": "Error get URLs from Database!",
-		})
-		fmt.Println(err)
-
-		return
-	}
-
-	// DB Is Empty
-	if results == nil {
-		c.JSON(http.StatusNotFound, json{
-			"success": false,
-			"message": "Database is empty!",
-		})
-
-		return
-	}
+	backend.Cache()
 
 	c.JSON(http.StatusOK, json{
 		"success": true,
-		"db":      results,
+		"db":      backend.CacheURL,
 	})
 }

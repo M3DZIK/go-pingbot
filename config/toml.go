@@ -27,7 +27,6 @@ type httpConfig struct {
 type backendConfig struct {
 	Enabled bool
 	Ping    time.Duration
-	Cache   int
 }
 
 type autoUpdateConfig struct {
@@ -65,10 +64,6 @@ func init() {
 				os.Exit(1)
 			}
 		}
-	}
-
-	if Toml.Backend.Cache == 0 {
-		Toml.Backend.Cache = 5
 	}
 
 	if Toml.MongoDB.Collection != "" {

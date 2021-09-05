@@ -6,23 +6,16 @@ import (
 	"time"
 
 	"github.com/MedzikUser/go-utils/common"
-	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
 
-var cacheRetry int
-
 func ping() int {
-	if cacheRetry >= config.Toml.Backend.Cache {
-		cache()
-		cacheRetry = 0
-	}
-	cacheRetry++
+	Cache()
 
-	for _, url := range cacheURL {
+	for _, url := range CacheURL {
 		go loop(url)
 	}
 
-	return len(cacheURL)
+	return len(CacheURL)
 }
 
 func loop(url string) {

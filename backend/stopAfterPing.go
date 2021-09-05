@@ -11,7 +11,7 @@ import (
 var log = common.Log
 
 func StopAfterPing() {
-	cache()
+	Cache()
 	num := ping()
 
 	// timeout

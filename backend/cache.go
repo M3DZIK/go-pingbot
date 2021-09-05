@@ -7,10 +7,10 @@ import (
 	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
 )
 
-var cacheURL []string
+var CacheURL []string
 
-func cache() {
-	cacheURL = cacheURL[:0]
+func Cache() {
+	CacheURL = CacheURL[:0]
 
 	err := common.Retry(1, 1*time.Second, func() error {
 		results, err := mongo.GetAll()
@@ -19,7 +19,7 @@ func cache() {
 		}
 
 		for _, value := range results {
-			cacheURL = append(cacheURL, value.URL)
+			CacheURL = append(CacheURL, value.URL)
 		}
 
 		return nil
