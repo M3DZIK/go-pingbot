@@ -2,7 +2,6 @@ package mongo
 
 import (
 	"context"
-	"os"
 	"time"
 
 	"github.com/MedzikUser/go-utils/common"
@@ -15,33 +14,27 @@ import (
 var Client mongo.Client
 var Coll *mongo.Collection
 
-func Connect(retry ...int8) {
-	if len(retry) == 0 {
-		retry = append(retry, 0)
-	}
+func Connect() error {
+	return common.Retry(5, 2*time.Second, func() error {
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
 
-	if retry[0] == 5 {
-		os.Exit(1)
-	}
+		Client, err := mongo.Connect(ctx, options.Client().ApplyURI(config.Mongo_URI))
+		if common.CheckErr(err, "connect to db") {
+			time.Sleep(2 * time.Second)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
+			return err
+		}
 
-	Client, err := mongo.Connect(ctx, options.Client().ApplyURI(config.Mongo_URI))
-	if common.CheckErr(err, "connect to db") {
-		time.Sleep(2 * time.Second)
-		Connect(retry[0] + 1)
+		err = Client.Ping(ctx, readpref.Primary())
+		if common.CheckErr(err, "ping db") {
+			time.Sleep(2 * time.Second)
 
-		return
-	}
+			return err
+		}
 
-	err = Client.Ping(ctx, readpref.Primary())
-	if common.CheckErr(err, "ping db") {
-		time.Sleep(2 * time.Second)
-		Connect(retry[0] + 1)
+		Coll = Client.Database(config.Mongo_DB).Collection(config.Mongo_Collection)
 
-		return
-	}
-
-	Coll = Client.Database(config.Mongo_DB).Collection(config.Mongo_Collection)
+		return nil
+	})
 }

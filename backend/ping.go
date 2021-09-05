@@ -13,7 +13,7 @@ var cacheRetry int
 
 func ping() int {
 	if cacheRetry >= config.Toml.Backend.Cache {
-		cache(0)
+		cache()
 		cacheRetry = 0
 	}
 	cacheRetry++

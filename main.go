@@ -87,7 +87,13 @@ func main() {
 		}
 	}
 
-	mongo.Connect()
+	err := mongo.Connect()
+
+	if err != nil {
+		log.Error(err)
+
+		os.Exit(1)
+	}
 
 	if config.Toml.AutoUpdate.Enabled {
 		wg.Add(1)

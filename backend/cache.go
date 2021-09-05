@@ -9,20 +9,23 @@ import (
 
 var cacheURL []string
 
-func cache(retry int) {
+func cache() {
 	cacheURL = cacheURL[:0]
 
-	results, err := mongo.GetAll()
-	if common.CheckErr(err, "get documents from db") {
-		if retry == 5 {
-			time.Sleep(500 * time.Millisecond)
-			cache(retry + 1)
-		} else {
-			return
+	err := common.Retry(1, 1*time.Second, func() error {
+		results, err := mongo.GetAll()
+		if err != nil {
+			return err
 		}
-	}
 
-	for _, value := range results {
-		cacheURL = append(cacheURL, value.URL)
+		for _, value := range results {
+			cacheURL = append(cacheURL, value.URL)
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		log.Error(err)
 	}
 }
