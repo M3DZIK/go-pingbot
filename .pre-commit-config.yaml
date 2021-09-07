@@ -1,0 +1,16 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/tekwizely/pre-commit-golang
+    rev: master
+    hooks:
+    #
+    # Go Mod Tidy
+    #
+    -   id: go-mod-tidy
+    -   id: go-mod-tidy-repo
+    #
+    # Formatters
+    #
+    -   id: go-fmt
+    -   id: go-fmt-repo

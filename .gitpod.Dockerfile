@@ -8,3 +8,5 @@ RUN sudo mv bin/* /usr/bin/ && \
 
 RUN yarn global add nodemon
 RUN echo "export PATH=\$PATH:`yarn global bin`" >> ~/.bashrc
+
+RUN pip install pre-commit
