@@ -5,6 +5,10 @@ repos:
     rev: master
     hooks:
     #
+    # Go Build
+    #
+    -   id: go-build-mod
+    #
     # Go Mod Tidy
     #
     -   id: go-mod-tidy
