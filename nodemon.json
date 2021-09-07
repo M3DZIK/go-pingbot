@@ -1,6 +1,6 @@
 {
   "watch": ["*"],
-  "ext": "go toml sh",
+  "ext": "go toml",
   "signal": "SIGTERM",
   "quiet": true,
   "exec": "clear && bash nodemon.sh"

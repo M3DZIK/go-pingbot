@@ -6,9 +6,6 @@ build:
 snapshot:
 	goreleaser --snapshot --rm-dist
 
-run:
-	go run .
-
 clean:
 	go clean
 	rm -rf pingbot* dist/

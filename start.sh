@@ -15,8 +15,8 @@ chmod +x pingbot.out
 
 printf "${nc}[${red}END${nc}]\n"
 
-# Wait 5 seconds
-sleep 5
+# Wait 2 seconds
+sleep 2
 
 # Loop start e.g. on update => restart
 bash start.sh

@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 -   repo: https://github.com/tekwizely/pre-commit-golang
-    rev: master
+    rev: v1.0.0-beta.4
     hooks:
     #
     # Go Build
