@@ -96,25 +96,29 @@ func main() {
 	}
 
 	if config.Toml.AutoUpdate.Enabled {
-		wg.Add(1)
+		if config.Version == "dev" {
+			log.Warn("You using dev version. Auto Update DISABLED!")
+		} else {
+			wg.Add(1)
 
-		client := updater.Client{
-			GitHub:      config.GH_Repo,
-			GitHubToken: config.GH_Token,
-			Version:     config.Version,
-			Binary:      "pingbot.out",
-			CheckEvery:  config.Toml.AutoUpdate.Check * time.Minute,
-			AfterUpdate: func() {
-				log.Info("Updated!")
+			client := updater.Client{
+				GitHub:      config.GH_Repo,
+				GitHubToken: config.GH_Token,
+				Version:     config.Version,
+				Binary:      "pingbot.out",
+				CheckEvery:  config.Toml.AutoUpdate.Check * time.Minute,
+				AfterUpdate: func() {
+					log.Info("Updated!")
 
-				if !config.Toml.Options.Stop_After_Ping {
-					os.Exit(0)
-				}
-			},
-			Major: false,
+					if !config.Toml.Options.Stop_After_Ping {
+						os.Exit(0)
+					}
+				},
+				Major: false,
+			}
+
+			go client.AutoUpdater()
 		}
-
-		go client.AutoUpdater()
 	} else {
 		log.Warn("Auto Update -> Disabled")
 	}
