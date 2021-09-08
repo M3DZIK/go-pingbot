@@ -33,7 +33,7 @@ func Connect() error {
 			return err
 		}
 
-		Coll = Client.Database(config.Mongo_DB).Collection(config.Mongo_Collection)
+		Coll = Client.Database(config.Toml.MongoDB.Database).Collection(config.Toml.MongoDB.Collection)
 
 		return nil
 	})

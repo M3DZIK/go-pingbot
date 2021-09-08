@@ -10,10 +10,6 @@ ping=3                      # Ping every three minutes
 enabled=true                # Enable Auto Updater
 check=2                     # Check every two minutes
 
-[cluster]
-id=1                        # Cluster ID
-node=1                      # Node ID
-
 [mongodb]
 database="PingBot"          # MongoDB Database Name
 collection="URL"            # MongoDB Collection Name

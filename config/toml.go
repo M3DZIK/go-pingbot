@@ -35,8 +35,7 @@ type autoUpdateConfig struct {
 }
 
 type clusterConfig struct {
-	ID   int
-	Node int
+	ID int
 }
 
 type mongoDBConfig struct {
@@ -64,14 +63,6 @@ func init() {
 				os.Exit(1)
 			}
 		}
-	}
-
-	if Toml.MongoDB.Collection != "" {
-		Mongo_Collection = Toml.MongoDB.Collection
-	}
-
-	if Toml.MongoDB.Database != "" {
-		Mongo_DB = Toml.MongoDB.Database
 	}
 }
 
