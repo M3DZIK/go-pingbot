@@ -12,7 +12,7 @@ var CacheURL []string
 func Cache() {
 	CacheURL = CacheURL[:0]
 
-	err := common.Retry(1, 1*time.Second, func() error {
+	err := common.Retry(15, 1*time.Second, func() error {
 		results, err := mongo.GetAll()
 		if err != nil {
 			return err
