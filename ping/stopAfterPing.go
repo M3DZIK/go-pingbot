@@ -40,5 +40,7 @@ func StopAfterPing() {
 
 			break
 		}
+
+		time.Sleep(100 * time.Millisecond) // 0.1 second
 	}
 }
