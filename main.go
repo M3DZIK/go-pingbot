@@ -10,9 +10,9 @@ import (
 	"github.com/MedzikUser/go-utils/common"
 	"github.com/MedzikUser/go-utils/updater"
 	"github.com/jpillora/opts"
-	"gitlab.com/gaming0skar123/go/pingbot/backend"
 	"gitlab.com/gaming0skar123/go/pingbot/config"
 	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
+	"gitlab.com/gaming0skar123/go/pingbot/ping"
 	"gitlab.com/gaming0skar123/go/pingbot/website"
 )
 
@@ -124,7 +124,7 @@ func main() {
 	}
 
 	if config.Toml.Options.Stop_After_Ping {
-		backend.StopAfterPing()
+		ping.StopAfterPing()
 
 		os.Exit(0)
 	}
@@ -138,7 +138,7 @@ func main() {
 
 	if config.Toml.Backend.Enabled {
 		wg.Add(1)
-		go backend.Ticker()
+		go ping.Ticker()
 	} else {
 		log.Warn("Backend -> Disabled")
 	}

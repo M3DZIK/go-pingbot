@@ -7,8 +7,8 @@ import (
 	"github.com/MedzikUser/go-utils/common"
 	"github.com/MedzikUser/go-utils/stats"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/gaming0skar123/go/pingbot/backend"
 	"gitlab.com/gaming0skar123/go/pingbot/config"
+	"gitlab.com/gaming0skar123/go/pingbot/ping"
 )
 
 func Status(c *gin.Context) {
@@ -19,20 +19,20 @@ func Status(c *gin.Context) {
 	cpu, err := stats.CPU()
 	common.CheckErr(err, "cpu stat")
 
-	var ping json
+	var p json
 
 	if config.Toml.Backend.Enabled {
-		ping = json{
-			"all":     backend.Status.Error + backend.Status.Success,
-			"success": backend.Status.Success,
-			"err":     backend.Status.Error,
+		p = json{
+			"all":     ping.Status.Error + ping.Status.Success,
+			"success": ping.Status.Success,
+			"err":     ping.Status.Error,
 		}
 	} else {
-		ping = nil
+		p = nil
 	}
 
 	c.JSON(http.StatusOK, json{
-		"ping": ping,
+		"ping": p,
 		"sys": json{
 			"pid": cpu.PID,
 			"os":  runtime.GOOS,

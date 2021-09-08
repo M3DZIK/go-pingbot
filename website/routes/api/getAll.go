@@ -4,14 +4,14 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/gaming0skar123/go/pingbot/backend"
+	"gitlab.com/gaming0skar123/go/pingbot/ping"
 )
 
 func GetAll(c *gin.Context) {
-	backend.Cache()
+	ping.Cache()
 
 	c.JSON(http.StatusOK, json{
 		"success": true,
-		"db":      backend.CacheURL,
+		"db":      ping.CacheURL,
 	})
 }

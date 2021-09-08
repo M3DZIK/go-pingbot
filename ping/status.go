@@ -1,4 +1,4 @@
-package backend
+package ping
 
 var Status StatusType
 
