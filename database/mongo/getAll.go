@@ -3,8 +3,6 @@ package mongo
 import (
 	"context"
 	"time"
-
-	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
 
 func GetAll() ([]URL, error) {
@@ -13,9 +11,7 @@ func GetAll() ([]URL, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	cursor, err := Coll.Find(ctx, URL{
-		Cluster: config.Toml.Cluster.ID,
-	})
+	cursor, err := Coll.Find(ctx, URL{})
 	if err != nil {
 		return nil, err
 	}

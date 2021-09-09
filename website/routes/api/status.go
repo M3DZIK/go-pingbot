@@ -34,8 +34,9 @@ func Status(c *gin.Context) {
 	c.JSON(http.StatusOK, json{
 		"ping": p,
 		"sys": json{
-			"pid": cpu.PID,
-			"os":  runtime.GOOS,
+			"uptime": common.Uptime(config.StartTime),
+			"pid":    cpu.PID,
+			"os":     runtime.GOOS,
 			"mem": json{
 				"alloc":      mem.Alloc,
 				"totalalloc": mem.TotalAlloc,
@@ -52,10 +53,6 @@ func Status(c *gin.Context) {
 			"go":      runtime.Version(),
 			"release": config.Version,
 			"build":   config.Build,
-		},
-		"node": json{
-			"cluster": config.Toml.Cluster.ID,
-			"uptime":  common.Uptime(config.StartTime),
 		},
 	})
 }

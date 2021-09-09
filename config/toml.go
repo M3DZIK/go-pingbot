@@ -14,7 +14,6 @@ type tomlConfig struct {
 	HTTP       httpConfig
 	Backend    backendConfig
 	AutoUpdate autoUpdateConfig
-	Cluster    clusterConfig
 	MongoDB    mongoDBConfig
 	Options    optionsConfig
 }
@@ -32,10 +31,6 @@ type backendConfig struct {
 type autoUpdateConfig struct {
 	Enabled bool
 	Check   time.Duration
-}
-
-type clusterConfig struct {
-	ID int
 }
 
 type mongoDBConfig struct {
