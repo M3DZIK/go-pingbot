@@ -11,7 +11,6 @@ func GetAll(c *gin.Context) {
 	ping.Cache()
 
 	c.JSON(http.StatusOK, json{
-		"success": true,
-		"db":      ping.CacheURL,
+		"db": ping.CacheURL,
 	})
 }

@@ -17,11 +17,11 @@ require (
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/joho/godotenv v1.3.0
 	github.com/jpillora/opts v1.2.0
-	github.com/json-iterator/go v1.1.11 // indirect
-	github.com/klauspost/compress v1.13.5 // indirect
+	github.com/json-iterator/go v1.1.12 // indirect
+	github.com/klauspost/compress v1.13.6 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
-	github.com/modern-go/reflect2 v1.0.1 // indirect
+	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/ulikunitz/xz v0.5.10 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
