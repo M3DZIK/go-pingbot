@@ -25,7 +25,7 @@ func Status(c *gin.Context) {
 		p = json{
 			"all":     ping.Status.Error + ping.Status.Success,
 			"success": ping.Status.Success,
-			"err":     ping.Status.Error,
+			"error":   ping.Status.Error,
 		}
 	} else {
 		p = nil
@@ -37,7 +37,7 @@ func Status(c *gin.Context) {
 			"uptime": common.Uptime(config.StartTime),
 			"pid":    cpu.PID,
 			"os":     runtime.GOOS,
-			"mem": json{
+			"memory": json{
 				"alloc":      mem.Alloc,
 				"totalalloc": mem.TotalAlloc,
 				"sys":        mem.Sys,
