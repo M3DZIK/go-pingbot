@@ -13,7 +13,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout v1
+      - name: Repo clone (go mod tidy / gofmt)
         if: github.event_name != 'pull_request'
         uses: actions/checkout@v2
         with:
@@ -61,10 +61,10 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Checkout v2
+      - name: Repo clone (build)
         uses: actions/checkout@v2
         with:
-          fetch-depth: '0'
+          fetch-depth: 0
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
