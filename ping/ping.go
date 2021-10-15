@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/MedzikUser/go-utils/common"
+	"gitlab.com/gaming0skar123/go/pingbot/config"
 )
 
 func ping() int {
@@ -29,6 +30,8 @@ func loop(url string) {
 
 		return
 	}
+
+	req.Header.Set("User-Agent", config.UserAgent)
 
 	client := http.DefaultClient
 	r, err := client.Do(req)
