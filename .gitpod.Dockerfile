@@ -1,1 +1,0 @@
-FROM medzik/gitpod:full
