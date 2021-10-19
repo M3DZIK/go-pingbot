@@ -1,5 +1,4 @@
-image:
-  file: .gitpod.Dockerfile
+image: medzik/gitpod:full
 
 checkoutLocation: "go/src/pingbot"
 workspaceLocation: "go/src/pingbot"
