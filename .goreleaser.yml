@@ -31,3 +31,34 @@ checksum:
   name_template: 'md5_checksums.txt'
 
   algorithm: md5
+
+dockers:
+  - id: amd64
+
+    goos: linux
+
+    goarch: amd64
+
+    goarm: ''
+
+    image_templates:
+    - "medzik/pingbot:latest"
+    - "medzik/pingbot:{{ .Tag }}"
+    - "medzik/pingbot:v{{ .Major }}"
+    - "medzik/pingbot:v{{ .Major }}.{{ .Minor }}"
+
+    dockerfile: Dockerfile
+
+    use: docker
+
+    build_flag_templates:
+    - "--pull"
+    - "--label=org.opencontainers.image.created={{.Date}}"
+    - "--label=org.opencontainers.image.title={{.ProjectName}}"
+    - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+    - "--label=org.opencontainers.image.version={{.Version}}"
+    - "--build-arg=FOO={{.Env.Bar}}"
+    - "--platform=linux/arm64"
+
+    extra_files:
+    - start.sh
