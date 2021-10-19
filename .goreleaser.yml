@@ -31,10 +31,3 @@ checksum:
   name_template: 'md5_checksums.txt'
 
   algorithm: md5
-
-signs:
-  - cmd: gpg2
-
-    args: ["--output", "${signature}", "${artifact}", "{{ .ProjectName }}"]
-
-    artifacts: all
