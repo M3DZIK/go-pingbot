@@ -24,7 +24,6 @@ type cmdOpts struct {
 
 func main() {
 	log.Info("You're using verion: ", config.Version)
-	log.Info(config.UserAgent)
 
 	var wg sync.WaitGroup
 
