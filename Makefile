@@ -1,11 +1,19 @@
-BINARY_NAME=pingbot.out
+BINARY_NAME := pingbot.out
+
+# executables
+GO         := go
+GORELEASER := goreleaser
+
+# build flags
+BUILD_FLAGS :=
 
 build:
-	go build -o ${BINARY_NAME}
+	$(GO) build $(BUILD_FLAGS) -o $(BINARY_NAME)
 
 snapshot:
-	goreleaser --snapshot --rm-dist
+	$(GORELEASER) --snapshot --rm-dist
 
 clean:
-	go clean
+	$(GO) clean
 	rm -rf pingbot* dist/
+
