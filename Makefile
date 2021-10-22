@@ -16,4 +16,3 @@ snapshot:
 clean:
 	$(GO) clean
 	rm -rf pingbot* dist/
-
