@@ -23,9 +23,8 @@ This application "pings" websites every few minutes (to be set in config). It ca
 
 * Download source code `git clone https://github.com/MedzikUser/go-pingbot.git --depth 1`
 * Go to folder with source code `cd go-pingbot`
-* Download dependencies `go mod tidy`
-* Build `go build -o pingbot.out`
-* Done your compined binary is `pingbot.out`
+* Build `make` or `go build -o pingbot.out`
+* Done your compiled binary is `pingbot.out`
 
 ## ⚙️ Configurate
 
