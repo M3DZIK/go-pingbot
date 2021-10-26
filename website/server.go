@@ -7,9 +7,9 @@ import (
 	"github.com/MedzikUser/go-utils/common"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/gaming0skar123/go/pingbot/config"
-	"gitlab.com/gaming0skar123/go/pingbot/website/routes"
-	"gitlab.com/gaming0skar123/go/pingbot/website/routes/api"
+	"gitlab.com/MedzikUser/go/pingbot/config"
+	"gitlab.com/MedzikUser/go/pingbot/website/routes"
+	"gitlab.com/MedzikUser/go/pingbot/website/routes/api"
 )
 
 var router *gin.Engine

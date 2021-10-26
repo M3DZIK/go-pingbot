@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/MedzikUser/go-utils/common"
-	"gitlab.com/gaming0skar123/go/pingbot/config"
+	"gitlab.com/MedzikUser/go/pingbot/config"
 )
 
 func ping() int {

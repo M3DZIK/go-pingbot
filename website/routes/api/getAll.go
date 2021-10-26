@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/gaming0skar123/go/pingbot/ping"
+	"gitlab.com/MedzikUser/go/pingbot/ping"
 )
 
 func GetAll(c *gin.Context) {

@@ -10,10 +10,10 @@ import (
 	"github.com/MedzikUser/go-utils/common"
 	"github.com/MedzikUser/go-utils/updater"
 	"github.com/jpillora/opts"
-	"gitlab.com/gaming0skar123/go/pingbot/config"
-	"gitlab.com/gaming0skar123/go/pingbot/database/mongo"
-	"gitlab.com/gaming0skar123/go/pingbot/ping"
-	"gitlab.com/gaming0skar123/go/pingbot/website"
+	"gitlab.com/MedzikUser/go/pingbot/config"
+	"gitlab.com/MedzikUser/go/pingbot/database/mongo"
+	"gitlab.com/MedzikUser/go/pingbot/ping"
+	"gitlab.com/MedzikUser/go/pingbot/website"
 )
 
 var log = common.Log

@@ -1,4 +1,4 @@
-module gitlab.com/gaming0skar123/go/pingbot
+module gitlab.com/MedzikUser/go/pingbot
 
 go 1.17
 

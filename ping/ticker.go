@@ -3,7 +3,7 @@ package ping
 import (
 	"time"
 
-	"gitlab.com/gaming0skar123/go/pingbot/config"
+	"gitlab.com/MedzikUser/go/pingbot/config"
 )
 
 func Ticker() {
