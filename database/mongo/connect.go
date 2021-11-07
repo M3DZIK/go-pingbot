@@ -20,14 +20,18 @@ func Connect() error {
 		defer cancel()
 
 		Client, err := mongo.Connect(ctx, options.Client().ApplyURI(config.Mongo_URI))
-		if common.CheckErr(err, "connect to db") {
+		if err != nil {
+			common.Log.Error("connect to db", err)
+
 			time.Sleep(2 * time.Second)
 
 			return err
 		}
 
 		err = Client.Ping(ctx, readpref.Primary())
-		if common.CheckErr(err, "ping db") {
+		if err != nil {
+			common.Log.Error("ping db", err)
+
 			time.Sleep(2 * time.Second)
 
 			return err

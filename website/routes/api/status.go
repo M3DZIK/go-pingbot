@@ -17,7 +17,9 @@ func Status(c *gin.Context) {
 
 	mem := stats.Memory()
 	cpu, err := stats.CPU()
-	common.CheckErr(err, "cpu stat")
+	if err != nil {
+			common.Log.Error("cpu stat", err)
+	}
 
 	var p json
 

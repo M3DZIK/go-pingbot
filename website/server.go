@@ -31,7 +31,9 @@ func Server() {
 	api.ApplyRoutes(router)
 
 	err := router.Run(":" + strconv.Itoa(config.Toml.HTTP.Port))
-	if common.CheckErr(err, "gin server run") {
+	if err != nil {
+		common.Log.Error("gin start http server", err)
+
 		os.Exit(1)
 	}
 }

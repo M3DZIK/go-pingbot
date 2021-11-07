@@ -25,7 +25,9 @@ func loop(url string) {
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
-	if common.CheckErr(err, "new http request") {
+	if err != nil {
+		common.Log.Error("new http request", err)
+
 		Status.Error++
 
 		return
