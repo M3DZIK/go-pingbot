@@ -10,10 +10,10 @@ import (
 	"github.com/MedzikUser/go-utils/common"
 	"github.com/MedzikUser/go-utils/updater"
 	"github.com/jpillora/opts"
-	"gitlab.com/MedzikUser/go/pingbot/config"
-	"gitlab.com/MedzikUser/go/pingbot/database/mongo"
-	"gitlab.com/MedzikUser/go/pingbot/ping"
-	"gitlab.com/MedzikUser/go/pingbot/website"
+	"github.com/medzikuser/go-pingbot/config"
+	"github.com/medzikuser/go-pingbot/database/mongo"
+	"github.com/medzikuser/go-pingbot/ping"
+	"github.com/medzikuser/go-pingbot/website"
 )
 
 var log = common.Log
@@ -54,7 +54,7 @@ func main() {
 			reader := bufio.NewReader((os.Stdin))
 			char, _, err := reader.ReadRune()
 			if err != nil {
-				fmt.Println(err)
+				log.Error(err)
 			}
 
 			switch char {
@@ -63,6 +63,7 @@ func main() {
 				err := client.Update()
 				if err != nil {
 					log.Error(err)
+
 					os.Exit(1)
 				}
 
@@ -71,18 +72,22 @@ func main() {
 				err := client.Update()
 				if err != nil {
 					log.Error(err)
+
 					os.Exit(1)
 				}
 
 			default:
 				log.Warn("Canceled!")
+
 				os.Exit(2)
 			}
 		} else if err != nil {
 			log.Error(err)
+
 			os.Exit(1)
 		} else {
 			log.Info("You're using latest version!")
+
 			os.Exit(0)
 		}
 	}
@@ -131,6 +136,7 @@ func main() {
 
 	if config.Toml.HTTP.Enabled {
 		wg.Add(1)
+
 		go website.Server()
 	} else {
 		log.Warn("HTTP Server -> Disabled")
@@ -138,6 +144,7 @@ func main() {
 
 	if config.Toml.Backend.Enabled {
 		wg.Add(1)
+
 		go ping.Ticker()
 	} else {
 		log.Warn("Backend -> Disabled")

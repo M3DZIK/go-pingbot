@@ -48,16 +48,8 @@ var Toml tomlConfig
 func init() {
 	_, err := toml.DecodeFile("./config.toml", &Toml)
 
-	if common.CheckErr(err, "decode toml config") {
-		if err.Error() == "open ./config.toml: no such file or directory" {
-			err := DownloadFile("config.toml", "https://github.com/"+GH_Repo+"/raw/main/config.schema.toml")
-
-			if !common.CheckErr(err, "download default config") {
-				_, err = toml.DecodeFile("./config.toml", &Toml)
-				common.CheckErr(err, "decode toml config")
-				os.Exit(1)
-			}
-		}
+	if err != nil {
+		common.Log.Error("decode toml config: ", err)
 	}
 }
 

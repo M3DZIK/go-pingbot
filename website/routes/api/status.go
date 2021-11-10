@@ -7,8 +7,8 @@ import (
 	"github.com/MedzikUser/go-utils/common"
 	"github.com/MedzikUser/go-utils/stats"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/MedzikUser/go/pingbot/config"
-	"gitlab.com/MedzikUser/go/pingbot/ping"
+	"github.com/medzikuser/go-pingbot/config"
+	"github.com/medzikuser/go-pingbot/ping"
 )
 
 func Status(c *gin.Context) {

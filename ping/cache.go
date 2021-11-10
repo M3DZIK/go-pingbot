@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/MedzikUser/go-utils/common"
-	"gitlab.com/MedzikUser/go/pingbot/database/mongo"
+	"github.com/medzikuser/go-pingbot/database/mongo"
 )
 
 var CacheURL []string

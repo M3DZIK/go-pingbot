@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/MedzikUser/go-utils/common"
-	"gitlab.com/MedzikUser/go/pingbot/config"
+	"github.com/medzikuser/go-pingbot/config"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"

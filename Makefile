@@ -8,6 +8,7 @@ GORELEASER := goreleaser
 BUILD_FLAGS :=
 
 build:
+	$(GO) mod tidy
 	$(GO) build $(BUILD_FLAGS) -o $(BINARY_NAME)
 
 snapshot:
