@@ -7,8 +7,10 @@ before:
 builds:
   - goos:
       - linux
+      - freebsd
     goarch:
       - amd64
+      - arm64
 
     binary: '{{ .ProjectName }}.out'
 
