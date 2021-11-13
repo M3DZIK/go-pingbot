@@ -19,7 +19,8 @@ import (
 var log = common.Log
 
 type cmdOpts struct {
-	Update bool `opts:"help=update version to latest e.g. if update is major"`
+	Update   bool `opts:"help=update version to latest e.g. if update is major"`
+	NoUpdate bool `opts:"help=disable auto updater"`
 }
 
 func main() {
@@ -100,7 +101,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	if config.Toml.AutoUpdate.Enabled {
+	if config.Toml.AutoUpdate.Enabled && !c.NoUpdate {
 		if config.Version == "dev" {
 			log.Warn("You using dev version. Auto Update DISABLED!")
 		} else {

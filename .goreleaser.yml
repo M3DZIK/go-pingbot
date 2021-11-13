@@ -5,14 +5,15 @@ before:
     - go mod tidy
 
 builds:
-  - goos:
+  - main: ./cmd/pingbot
+    binary: '{{ .ProjectName }}.out'
+
+    goos:
       - linux
       - freebsd
     goarch:
       - amd64
       - arm64
-
-    binary: '{{ .ProjectName }}.out'
 
     ldflags:
       - -s -w

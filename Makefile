@@ -9,7 +9,7 @@ BUILD_FLAGS :=
 
 build:
 	$(GO) mod tidy
-	$(GO) build $(BUILD_FLAGS) -o $(BINARY_NAME)
+	$(GO) build ${BUILD_FLAGS} -o ${BINARY_NAME} ./cmd/pingbot
 
 snapshot:
 	$(GORELEASER) --snapshot --rm-dist
