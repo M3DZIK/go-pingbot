@@ -15,5 +15,7 @@ dist/
 *.test
 
 # Configs
-*.toml*
-!*schema.toml
+config.toml
+
+# Log files
+air-build-errors.log

@@ -1,4 +1,4 @@
-BINARY_NAME := pingbot.out
+BINARY_OUT := pingbot.out
 
 # executables
 GO         := go
@@ -9,11 +9,10 @@ BUILD_FLAGS :=
 
 build:
 	$(GO) mod tidy
-	$(GO) build ${BUILD_FLAGS} -o ${BINARY_NAME} ./cmd/pingbot
+	$(GO) build ${BUILD_FLAGS} -o ${BINARY_OUT} ./cmd/pingbot
 
 snapshot:
 	$(GORELEASER) --snapshot --rm-dist
 
 clean:
 	$(GO) clean
-	rm -rf pingbot* dist/
