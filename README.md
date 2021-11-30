@@ -21,7 +21,7 @@ This application "pings" websites every few minutes (to be set in config). It ca
 
 ### ⭐ Compile
 
-Method 2:
+Method 1:
 * `go install github.com/medzikuser/go-pingbot@latest`
 * Output binary path
   * Check GOPATH `go env GOPATH`
