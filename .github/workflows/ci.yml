@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Repo clone (go mod tidy / gofmt)
+      - name: Checkout (go mod tidy / gofmt)
         if: github.event_name != 'pull_request'
         uses: actions/checkout@v3
         with:
@@ -23,8 +23,6 @@ jobs:
 
       - name: Set up Go
         uses: actions/setup-go@v3
-        with:
-          go-version: 1.17
 
       - name: Setup Git
         if: github.event_name != 'pull_request'
@@ -63,7 +61,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Repo clone (build)
+      - name: Checkout (build)
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
