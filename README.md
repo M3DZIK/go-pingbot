@@ -1,4 +1,4 @@
-# [Pingbot](https://pingbot.cf/) - Backend
+# [Pingbot](https://pingbot.vercel.app) - Backend
 
 [![Repo Size](https://img.shields.io/github/repo-size/MedzikUser/go-pingbot)](https://github.com/medzikuser/go-pingbot)
 [![Build](https://img.shields.io/github/workflow/status/MedzikUser/go-pingbot/release/main)](https://github.com/medzikuser/go-pingbot/actions/workflows/release.yml)
