@@ -1,19 +1,25 @@
 {
-  "extends": [
-    "config:base"
-  ],
-  "prHourlyLimit": 0,
-  "automergeType": "pr",
-  "prCreation": "immediate",
-  "packageRules": [
-    {
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest"
-      ],
-      "automerge": true
-    }
-  ]
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:base",
+        "schedule:weekly",
+        "group:allNonMajor",
+        ":semanticCommits"
+    ],
+    "labels": [
+        "dependencies"
+    ],
+    "automergeType": "pr",
+    "prCreation": "immediate",
+    "packageRules": [
+        {
+            "matchUpdateTypes": [
+                "minor",
+                "patch",
+                "pin",
+                "digest"
+            ],
+            "automerge": true
+        }
+    ]
 }
