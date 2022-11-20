@@ -1,9 +1,9 @@
 module github.com/medzikuser/go-pingbot
 
-go 1.17
+go 1.19
 
 require (
-	github.com/BurntSushi/toml v1.1.0
+	github.com/BurntSushi/toml v1.2.1
 	github.com/MedzikUser/go-utils v1.0.0
 	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-gonic/gin v1.8.1
@@ -15,7 +15,7 @@ require (
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/joho/godotenv v1.4.0
-	github.com/jpillora/opts v1.2.0
+	github.com/jpillora/opts v1.2.3
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
@@ -24,7 +24,7 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/ulikunitz/xz v0.5.10 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20201027041543-1326539a0a0a // indirect
-	go.mongodb.org/mongo-driver v1.10.0
+	go.mongodb.org/mongo-driver v1.11.0
 	golang.org/x/crypto v0.0.0-20220622213112-05595931fe9d // indirect
 	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2 // indirect
 	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8 // indirect
